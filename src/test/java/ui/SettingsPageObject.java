@@ -3,8 +3,8 @@ package ui;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-public class MenuSettingsPageObject extends MainPageObject{
-    public MenuSettingsPageObject(AppiumDriver driver) {
+public class SettingsPageObject extends MainPageObject{
+    public SettingsPageObject(AppiumDriver driver) {
         super(driver);
     }
 

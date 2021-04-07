@@ -84,6 +84,6 @@ public class SignUpPageObject extends MainPageObject {
     public void skipWarning() {
         waitForElementAndClick(By.id(SKIP_BUTTON),
                 "Не найдена кнопка пропустить",
-                15);
+                40);
     }
 }

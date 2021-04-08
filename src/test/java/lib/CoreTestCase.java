@@ -3,15 +3,11 @@ package lib;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import junit.framework.TestCase;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import ui.ComfirmPermissionsPageObject;
-import ui.MainScreenPageObject;
-import ui.SettingsPageObject;
-import ui.SignUpPageObject;
+import ui.*;
 
 import java.net.URL;
 
@@ -21,7 +17,7 @@ public class CoreTestCase extends TestCase {
     private String AppiumURL = "http://127.0.0.1:4723/wd/hub";
 
 
-    @Before
+    @BeforeAll
 
     public void setUp() throws Exception {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -34,15 +30,16 @@ public class CoreTestCase extends TestCase {
         desiredCapabilities.setCapability("ensureWebviewsHavePages", true);
 
         driver = new AndroidDriver(new URL(AppiumURL), desiredCapabilities);
-        //this.testLoginIFTSbol();
+        this.openSbolIFTandAssistantDialog();
     }
 
 
-    public void testLoginIFTSbol() throws InterruptedException {
+    public void openSbolIFTandAssistantDialog() throws InterruptedException {
         ComfirmPermissionsPageObject ComfirmPermissionsPageObject = new ComfirmPermissionsPageObject(driver);
         SettingsPageObject SettingsPageObject = new SettingsPageObject(driver);
         SignUpPageObject SignUpPageObject = new SignUpPageObject(driver);
         MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
         ComfirmPermissionsPageObject.confirmAgreement();
         ComfirmPermissionsPageObject.comfirmPermission();
@@ -51,6 +48,10 @@ public class CoreTestCase extends TestCase {
         Thread.sleep(1000);
         ComfirmPermissionsPageObject.allowPermission();
 
+        Thread.sleep(1000);
+        SettingsPageObject.menuSettings(1010, 159);
+        SettingsPageObject.selectServer();
+        SettingsPageObject.selectIFT();
         Thread.sleep(1000);
         SettingsPageObject.menuSettings(1010, 159);
         SettingsPageObject.chooseTestingSettings();
@@ -62,12 +63,7 @@ public class CoreTestCase extends TestCase {
         SettingsPageObject.closeSearchButton();
         SettingsPageObject.backToTogglesMenu();
         SettingsPageObject.backToHomeScreen();
-        Thread.sleep(1000);
-        SettingsPageObject.menuSettings(1010, 159);
-        SettingsPageObject.selectServer();
-        SettingsPageObject.selectIFT();
 
-        SignUpPageObject.signUp();
         SignUpPageObject.signUpByLogin();
         SignUpPageObject.clickInputLoginString();
         SignUpPageObject.inputLogin("p2pvoice4");
@@ -83,12 +79,14 @@ public class CoreTestCase extends TestCase {
                 MainScreenPageObject.waitForHomeButton().getAttribute("text"),
                 buttontext
         );
+        MainScreenPageObject.enterToAssistant();
+        OpenDialogAssistantPageObject.selectKeyboard();
     }
 
 
 
 
-    @After
+    @AfterAll
     public void tearDown() throws Exception {
         driver.quit();
     }

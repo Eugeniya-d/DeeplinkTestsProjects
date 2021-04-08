@@ -56,8 +56,6 @@ public class LoginIFTSbolTest extends CoreTestCase {
                 MainScreenPageObject.waitForHomeButton().getAttribute("text"),
                 buttontext
         );
-
-        MainScreenPageObject.enterToAssistant();
     }
 }
 

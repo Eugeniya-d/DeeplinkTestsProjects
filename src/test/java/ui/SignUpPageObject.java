@@ -11,7 +11,7 @@ public class SignUpPageObject extends MainPageObject {
     }
 
     private static final String SIGN_UP_BY_CARD_BUTTON = "//*[contains(@text, 'Войти по номеру карты')]";
-    private static final String SIGN_UP_BY_LOGIN_BUTTON = "//*[contains(@text, 'По логину')]";
+    private static final String SIGN_UP_BY_LOGIN_BUTTON = "//*[contains(@text, 'Войти по логину СберБанк Онлайн')]";
     private static final String ENTER_BUTTON = "ru.sberbankmobile_alpha:id/enter_button";
     private static final String LOGIN_BUTTON = "//*[contains(@text, 'Логин')]";
     private static final String SKIP_BUTTON = "ru.sberbankmobile_alpha:id/skip_button";

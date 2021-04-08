@@ -17,13 +17,13 @@ public class SignUpPageObject extends MainPageObject {
     private static final String SKIP_BUTTON = "ru.sberbankmobile_alpha:id/skip_button";
 
 
-    private static final String ONE = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_1']";
+    private static final String ONE = "ru.sberbankmobile_alpha:id/keyboard_number_1";
     private static final String TWO = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_2']";
     private static final String THREE = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_3']";
-    private static final String FOUR = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_4']";
+    private static final String FOUR = "ru.sberbankmobile_alpha:id/keyboard_number_4";
     private static final String FIVE = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_5']";
     private static final String SIX = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_6']";
-    private static final String SEVEN = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_7']";
+    private static final String SEVEN = "ru.sberbankmobile_alpha:id/keyboard_number_7";
     private static final String EIGHT = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_8']";
     private static final String NINE = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_9']";
     private static final String ZER0 = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_0']";
@@ -64,19 +64,19 @@ public class SignUpPageObject extends MainPageObject {
 
 
     public void inputPassword(){
-        waitForElementAndClick(By.xpath(ONE),
+        waitForElementAndClick(By.id(ONE),
                 "Не найдена цифра 1",
                 15);
-        waitForElementAndClick(By.xpath(FOUR),
+        waitForElementAndClick(By.id(FOUR),
                 "Не найдена цифра 4",
                 15);
-        waitForElementAndClick(By.xpath(SEVEN),
+        waitForElementAndClick(By.id(SEVEN),
                 "Не найдена цифра 7",
                 15);
-        waitForElementAndClick(By.xpath(ONE),
+        waitForElementAndClick(By.id(ONE),
                 "Не найдена цифра 1",
                 15);
-        waitForElementAndClick(By.xpath(FOUR),
+        waitForElementAndClick(By.id(FOUR),
                 "Не найдена цифра 4",
                 15);
     }

@@ -9,7 +9,7 @@ public class MainScreenPageObject extends MainPageObject{
         super(driver);
     }
 
-    private static final String VOICE_ASSISTANT_BUTTON = "//android.widget.FrameLayout[@content-desc='Ассистент, вкладка, 3 из 5']/android.view.View";
+    private static final String VOICE_ASSISTANT_BUTTON = "ru.sberbankmobile_alpha:id/image_voice_assistant";
     private static final String HOME_BUTTON = "//android.widget.FrameLayout[@content-desc='Главный, вкладка, 1 из 5']/android.widget.TextView";
 
     public WebElement waitForHomeButton() {
@@ -21,7 +21,7 @@ public class MainScreenPageObject extends MainPageObject{
 
 
     public void enterToAssistant() {
-        waitForElementAndClick(By.xpath(VOICE_ASSISTANT_BUTTON),
+        waitForElementAndClick(By.id(VOICE_ASSISTANT_BUTTON),
                 "Невозможно зайти в ассистент",
                 15);
     }

@@ -47,7 +47,7 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
 
-    DeeplinkPageObject.clickMainLink();
+    DeeplinkPageObject.clickLink(MAIN_SCREEN);
 
     String buttontext = "Главный";
     Assert.assertEquals(
@@ -61,7 +61,7 @@ public class DeeplinkTests extends CoreTestCase {
 
 
     @Test
-    public void testCallBank() throws InterruptedException {
+    public void testCallBank() {
         MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -74,7 +74,7 @@ public class DeeplinkTests extends CoreTestCase {
         String pageSource = driver.getPageSource();
         System.out.println(pageSource);
 
-        DeeplinkPageObject.clickMainLink();
+        DeeplinkPageObject.clickLink(CALL_BANK);
 
         String buttontext = "Главный";
         Assert.assertEquals(

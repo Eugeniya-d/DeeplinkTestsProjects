@@ -47,7 +47,7 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
 
-    DeeplinkPageObject.clickLink(MAIN_SCREEN);
+    DeeplinkPageObject.clickMain();
 
     String buttontext = "Главный";
     Assert.assertEquals(
@@ -62,7 +62,6 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testCallBank() {
-        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
@@ -71,18 +70,17 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
-        String pageSource = driver.getPageSource();
-        System.out.println(pageSource);
 
         DeeplinkPageObject.clickLink(CALL_BANK);
 
-        String buttontext = "Главный";
+        DeeplinkPageObject.callPermission();
+        String buttontext = "ПРЕРВАТЬ ЗВОНОК";
         Assert.assertEquals(
-                "Вход в СБОЛ ИФТ не был осуществлен",
-                MainScreenPageObject.waitForHomeButton().getAttribute("text"),
+                "Не найдена кнопка прервать звонок",
+                DeeplinkPageObject.waitForHangUpCall().getAttribute("text"),
                 buttontext
         );
-        MainScreenPageObject.enterToAssistant();
+        DeeplinkPageObject.hangUpCall();
         OpenDialogAssistantPageObject.selectKeyboard();
     }
 }

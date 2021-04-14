@@ -3,7 +3,12 @@ package tests;
 import lib.CoreTestCase;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import ui.*;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 
 public class DeeplinkTests extends CoreTestCase {
@@ -47,6 +52,9 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
 
+    /*if (driver.findElement(By.id("com.android.permissioncontroller:id/permission_deny_button")).isDisplayed()){
+        OpenDialogAssistantPageObject.voiceDeniPermission();
+    }*/
     DeeplinkPageObject.clickMain();
 
     String buttontext = "Главный";
@@ -60,7 +68,7 @@ public class DeeplinkTests extends CoreTestCase {
 }
 
 
-    @Test
+    @Test()
     public void testCallBank() {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -70,17 +78,28 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
+        DeeplinkPageObject.clickMain();
+        DeeplinkPageObject.denyCallButton();
+        OpenDialogAssistantPageObject.selectKeyboard();
+    }
 
-        DeeplinkPageObject.clickLink(CALL_BANK);
+
+    @Test
+    public void testChangePin() {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CHANGE_PIN);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+
+
+        DeeplinkPageObject.clickMain();
 
         DeeplinkPageObject.callPermission();
-        String buttontext = "ПРЕРВАТЬ ЗВОНОК";
-        Assert.assertEquals(
-                "Не найдена кнопка прервать звонок",
-                DeeplinkPageObject.waitForHangUpCall().getAttribute("text"),
-                buttontext
-        );
-        DeeplinkPageObject.hangUpCall();
+
         OpenDialogAssistantPageObject.selectKeyboard();
     }
 }

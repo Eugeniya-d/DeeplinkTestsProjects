@@ -15,10 +15,10 @@ public class DeeplinkPageObject extends MainPageObject {
             DENY_CALL_BUTTON = "com.android.permissioncontroller:id/permission_deny_button",
             HANG_UP_CALL_XPATH = "//*[contains(@text, 'ПРЕРВАТЬ ЗВОНОК')]",
             LINK_CALL = "ru.sberbankmobile_alpha:id/assistant_list_card_cells_container";
-    
 
 
-    public void clickMain() {
+
+    public void clickLink() {
         waitForElementAndClick(By.xpath(LINK_TO_MAIN) ,
                 "Не открывается ссылка на главный ",
                 10);

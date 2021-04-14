@@ -3,12 +3,8 @@ package tests;
 import lib.CoreTestCase;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ui.*;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 
 public class DeeplinkTests extends CoreTestCase {
@@ -52,7 +48,7 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
 
-    DeeplinkPageObject.clickMain();
+    DeeplinkPageObject.clickLink();
 
     String buttontext = "Главный";
     Assert.assertEquals(
@@ -75,7 +71,7 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
-        DeeplinkPageObject.clickMain();
+        DeeplinkPageObject.clickLink();
         DeeplinkPageObject.denyCallButton();
         OpenDialogAssistantPageObject.selectKeyboard();
     }
@@ -93,9 +89,9 @@ public class DeeplinkTests extends CoreTestCase {
 
 
 
-        DeeplinkPageObject.clickMain();
+        DeeplinkPageObject.clickLink();
 
-        DeeplinkPageObject.callPermission();
+
 
         OpenDialogAssistantPageObject.selectKeyboard();
     }

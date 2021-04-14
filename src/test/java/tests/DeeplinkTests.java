@@ -52,9 +52,6 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
 
-    /*if (driver.findElement(By.id("com.android.permissioncontroller:id/permission_deny_button")).isDisplayed()){
-        OpenDialogAssistantPageObject.voiceDeniPermission();
-    }*/
     DeeplinkPageObject.clickMain();
 
     String buttontext = "Главный";

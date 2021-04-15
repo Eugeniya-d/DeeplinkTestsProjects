@@ -38,7 +38,7 @@ public class DeeplinkTests extends CoreTestCase {
     CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
 
 @Test
-    public void testMainScreen() throws InterruptedException {
+    public void testMainScreen() {
     MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
     OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
     DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -77,7 +77,7 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
-    @Test
+  /*  @Test
     public void testChangePin() {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -91,6 +91,26 @@ public class DeeplinkTests extends CoreTestCase {
 
         DeeplinkPageObject.clickLink();
 
+
+
+
+    }*/
+
+    @Test
+    public void testHistory() {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(HISTORY);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+
+
+        DeeplinkPageObject.clickLink();
+        OpenDialogAssistantPageObject.voiceDeniPermission();
+        DeeplinkPageObject.clickLink();
 
 
         OpenDialogAssistantPageObject.selectKeyboard();

@@ -14,7 +14,7 @@ public class DeeplinkPageObject extends MainPageObject {
             WHILE_USING_APP_BUTTON = "com.android.permissioncontroller:id/permission_allow_foreground_only_button",
             DENY_CALL_BUTTON = "com.android.permissioncontroller:id/permission_deny_button",
             HANG_UP_CALL_XPATH = "//*[contains(@text, 'ПРЕРВАТЬ ЗВОНОК')]",
-            LINK_HISRORY = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.TextView",
+            LINK_HISRORY = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
             LINK_CALL = "ru.sberbankmobile_alpha:id/assistant_list_card_cells_container";
 
 
@@ -25,6 +25,11 @@ public class DeeplinkPageObject extends MainPageObject {
                 10);
     }
 
+    public void waitForLink() {
+        waitForElementPresent(By.id(LINK_CALL) ,
+                "Нет ссылки на главный ",
+                10);
+    }
     public void clickCall() {
 
         waitForElementAndClick(By.id(LINK_CALL) ,

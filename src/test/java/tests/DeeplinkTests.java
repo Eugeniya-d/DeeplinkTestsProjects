@@ -48,7 +48,8 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
 
-    DeeplinkPageObject.clickLink();
+
+    DeeplinkPageObject.clickCall();
 
     String buttontext = "Главный";
     Assert.assertEquals(
@@ -61,7 +62,7 @@ public class DeeplinkTests extends CoreTestCase {
 }
 
 
-    @Test()
+    @Test
     public void testCallBank() {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -71,7 +72,8 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
-        DeeplinkPageObject.clickLink();
+
+        DeeplinkPageObject.clickCall();
         DeeplinkPageObject.denyCallButton();
         OpenDialogAssistantPageObject.selectKeyboard();
     }
@@ -97,9 +99,10 @@ public class DeeplinkTests extends CoreTestCase {
     }*/
 
     @Test
-    public void testHistory() {
+    public void testHistory() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
 
         OpenDialogAssistantPageObject.clickInputLine();
         OpenDialogAssistantPageObject.inputText(HISTORY);
@@ -107,12 +110,11 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
 
 
+        Thread.sleep(1000);
 
-        DeeplinkPageObject.clickLink();
-        OpenDialogAssistantPageObject.voiceDeniPermission();
-        DeeplinkPageObject.clickLink();
+        DeeplinkPageObject.clickHistory();
 
-
+        MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
     }
 }

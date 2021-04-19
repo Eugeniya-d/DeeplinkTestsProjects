@@ -18,6 +18,7 @@ public class SignUpPageObject extends MainPageObject {
 
 
     private static final String ONE = "ru.sberbankmobile_alpha:id/keyboard_number_1";
+    private static final String ONE1 = "//android.widget.FrameLayout[@content-desc='1']";
     private static final String TWO = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_2']";
     private static final String THREE = "//*[@resource-id ='ru.sberbankmobile_alpha:id/keyboard_number_3']";
     private static final String FOUR = "ru.sberbankmobile_alpha:id/keyboard_number_4";
@@ -64,7 +65,7 @@ public class SignUpPageObject extends MainPageObject {
 
 
     public void inputPassword(){
-        waitForElementAndClick(By.id(ONE),
+        waitForElementAndClick(By.xpath(ONE1),
                 "Не найдена цифра 1",
                 15);
         waitForElementAndClick(By.id(FOUR),
@@ -73,7 +74,7 @@ public class SignUpPageObject extends MainPageObject {
         waitForElementAndClick(By.id(SEVEN),
                 "Не найдена цифра 7",
                 15);
-        waitForElementAndClick(By.id(ONE),
+        waitForElementAndClick(By.xpath(ONE1),
                 "Не найдена цифра 1",
                 15);
         waitForElementAndClick(By.id(FOUR),

@@ -114,6 +114,13 @@ public class DeeplinkTests extends CoreTestCase {
 
         DeeplinkPageObject.clickHistory();
 
+        String buttontext = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+
         MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
     }

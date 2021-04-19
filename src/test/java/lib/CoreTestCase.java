@@ -20,7 +20,7 @@ public class CoreTestCase extends TestCase {
     private String AppiumURL = "http://127.0.0.1:4723/wd/hub";
 
 
-    @Before
+    @BeforeAll
 
     public void setUp() throws Exception {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -93,7 +93,7 @@ public class CoreTestCase extends TestCase {
 
 
 
-    @After
+    @AfterAll
     public void tearDown() throws Exception {
         driver.quit();
     }

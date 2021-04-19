@@ -14,6 +14,8 @@ public class DeeplinkPageObject extends MainPageObject {
             DENY_CALL_BUTTON = "com.android.permissioncontroller:id/permission_deny_button",
             LINK_HISRORY = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
             LINK_CALL = "ru.sberbankmobile_alpha:id/assistant_list_card_cells_container",
+            LINK_CARD_VISIBILITY = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
+            BACK_TO_ASSISTANT_BUTTON = "//*[contains(@text,'Тип операции')]",
             OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]";
 
 
@@ -30,7 +32,7 @@ public class DeeplinkPageObject extends MainPageObject {
     }
 
     public WebElement waitForOperationTypePresent() {
-       return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
+        return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
                 "Нет кнопки тип операции",
                 10);
     }
@@ -43,12 +45,17 @@ public class DeeplinkPageObject extends MainPageObject {
     }
 
     public void clickHistory() {
-
         waitForElementAndClick(By.xpath(LINK_HISRORY),
                 "Не открывается ссылка истории",
                 10);
     }
 
+
+    public void clickCardVisibility() {
+        waitForElementAndClick(By.xpath(LINK_CARD_VISIBILITY),
+                "Не открывается ссылка видимости карт",
+                10);
+    }
 
     public void denyCallButton() {
         waitForElementAndClick(By.id(DENY_CALL_BUTTON),
@@ -56,5 +63,10 @@ public class DeeplinkPageObject extends MainPageObject {
                 15);
     }
 
+    public void backToAssistant() {
+        waitForElementAndClick(By.xpath(BACK_TO_ASSISTANT_BUTTON),
+                "Не найдена кнопка возврата в ассистент",
+                10);
+    }
 
 }

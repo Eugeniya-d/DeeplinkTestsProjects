@@ -57,8 +57,6 @@ public class DeeplinkTests extends CoreTestCase {
             MainScreenPageObject.waitForHomeButton().getAttribute("text"),
             buttontext
     );
-    MainScreenPageObject.enterToAssistant();
-    OpenDialogAssistantPageObject.selectKeyboard();
 }
 
 
@@ -75,7 +73,6 @@ public class DeeplinkTests extends CoreTestCase {
 
         DeeplinkPageObject.clickCall();
         DeeplinkPageObject.denyCallButton();
-        OpenDialogAssistantPageObject.selectKeyboard();
     }
 
 
@@ -98,11 +95,29 @@ public class DeeplinkTests extends CoreTestCase {
 
     }*/
 
+    //попробовать на клиенте с картами и добавить ассерт
     @Test
-    public void testHistory() throws InterruptedException {
+    public void testCardVisibility() {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CARD_VISIBILITY);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+
+
+
+        DeeplinkPageObject.clickCardVisibility();
+        DeeplinkPageObject.backToAssistant();
+    }
+
+    @Test
+    public void testHistory() {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
 
         OpenDialogAssistantPageObject.clickInputLine();
         OpenDialogAssistantPageObject.inputText(HISTORY);
@@ -110,7 +125,7 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
 
 
-        Thread.sleep(1000);
+
 
         DeeplinkPageObject.clickHistory();
 
@@ -120,8 +135,5 @@ public class DeeplinkTests extends CoreTestCase {
                 DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
                 buttontext
         );
-
-        MainScreenPageObject.enterToAssistant();
-        OpenDialogAssistantPageObject.selectKeyboard();
     }
 }

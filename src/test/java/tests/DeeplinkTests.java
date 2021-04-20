@@ -38,7 +38,7 @@ public class DeeplinkTests extends CoreTestCase {
     CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
 
 @Test
-    public void testMainScreen() {
+    public void testMainScreen() throws InterruptedException {
     MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
     OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
     DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -49,7 +49,9 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.sendMessage();
 
 
-    DeeplinkPageObject.clickCall();
+
+    Thread.sleep(5000);
+    DeeplinkPageObject.clickLink();
 
     String buttontext = "Главный";
     Assert.assertEquals(
@@ -61,7 +63,7 @@ public class DeeplinkTests extends CoreTestCase {
 
 
     @Test
-    public void testCallBank() {
+    public void testCallBank() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
@@ -70,14 +72,14 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
-
-        DeeplinkPageObject.clickCall();
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
         DeeplinkPageObject.denyCallButton();
     }
 
-
-  /*  @Test
-    public void testChangePin() {
+//не переходит по ссылке, хоть она и кликабельна
+   @Test
+    public void testChangePin() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
@@ -87,17 +89,14 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
 
 
-
-        DeeplinkPageObject.clickLink();
-
-
-
-
-    }*/
+       Thread.sleep(5000);
+       DeeplinkPageObject.clickLink();
+       DeeplinkPageObject.denyCallButton();
+    }
 
     //попробовать на клиенте с картами и добавить ассерт
     @Test
-    public void testCardVisibility() {
+    public void testCardVisibility() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
@@ -108,26 +107,28 @@ public class DeeplinkTests extends CoreTestCase {
 
 
 
-
-        DeeplinkPageObject.clickCardVisibility();
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
         DeeplinkPageObject.backToAssistant();
     }
 
+    //ссылка-птичка
     @Test
-    public void testHistory() {
+    public void testSberPay() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
 
         OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(HISTORY);
+        OpenDialogAssistantPageObject.inputText(SBER_PAY);
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
 
 
 
-        DeeplinkPageObject.clickHistory();
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
 
         String buttontext = "Тип операции";
         Assert.assertEquals(
@@ -136,4 +137,136 @@ public class DeeplinkTests extends CoreTestCase {
                 buttontext
         );
     }
+
+    @Test
+    public void testHistory() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(HISTORY);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //ссылка-птичка
+    @Test
+    public void testPushes() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(PUSHES);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+    }
+
+
+    @Test
+    public void testOpenDeposit() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(OPEN_DEPOSIT);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+    }
+
+ //птичка, не удалось подключить уведомления
+    @Test
+    public void testActivateNotifications() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(ACTIVATE_NOTIFICATION);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //сервис недоступен , нет проверки
+    @Test
+    public void testDebitStatements() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(DEBIT_STATEMENTS);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+    }
+
+
+    @Test
+    public void testListNotifications() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(NOTIFICATION_LIST);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(5000);
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Уведомления";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел уведомления",
+                DeeplinkPageObject.waitForNotificationTitle().getAttribute("text"),
+                buttontext
+        );
+    }
 }
+

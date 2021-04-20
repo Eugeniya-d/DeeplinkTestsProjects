@@ -20,7 +20,7 @@ public class CoreTestCase extends TestCase {
     private String AppiumURL = "http://127.0.0.1:4723/wd/hub";
 
 
-    @BeforeAll
+    @Before
 
     public void setUp() throws Exception {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -69,6 +69,7 @@ public class CoreTestCase extends TestCase {
 
         SignUpPageObject.signUpByLogin();
         SignUpPageObject.clickInputLoginString();
+        Thread.sleep(1000);
         SignUpPageObject.inputLogin("chatbotvoice");
         SignUpPageObject.confirmLogin();
         SignUpPageObject.inputPassword();
@@ -93,7 +94,7 @@ public class CoreTestCase extends TestCase {
 
 
 
-    @AfterAll
+    @After
     public void tearDown() throws Exception {
         driver.quit();
     }

@@ -4,23 +4,40 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.nio.file.FileStore;
+
 public class DeeplinkPageObject extends MainPageObject {
+
     public DeeplinkPageObject(AppiumDriver driver) {
         super(driver);
     }
 
     private static final String
             DENY_CALL_BUTTON = "com.android.permissioncontroller:id/permission_deny_button",
-            LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
+            LINK_CLICK1 = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
             BACK_TO_ASSISTANT_BUTTON = "//*[contains(@text,'Тип операции')]",
             NOTIFICATION_TITLE = "//*[contains(@text,'Уведомления')]",
-            OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]";
-
-
+            OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]",
+            CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
+            CARD_REISSUE_TITLE = "//*[contains(@text,'Перевыпуск карты')]",
+            LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
         return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
                 "Нет кнопки тип операции",
+                10);
+    }
+
+
+    public void  waitForCard() {
+        waitForElementPresent(By.id(CARD),
+                "Нет кнопки тип операции",
+                10);
+    }
+
+    public void clickCard() {
+        waitForElementAndClick(By.id(CARD),
+                "Не открывается ссылка",
                 10);
     }
 
@@ -36,7 +53,6 @@ public class DeeplinkPageObject extends MainPageObject {
     }
 
 
-
     public void denyCallButton() {
         waitForElementAndClick(By.id(DENY_CALL_BUTTON),
                 "Невозможно прервать звонок",
@@ -49,4 +65,8 @@ public class DeeplinkPageObject extends MainPageObject {
                 10);
     }
 
+    public WebElement waitForCardReissueTitle() {
+        return waitForElementPresent(By.xpath(CARD_REISSUE_TITLE),
+                10);
+    }
 }

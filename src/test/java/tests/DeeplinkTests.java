@@ -3,18 +3,19 @@ package tests;
 import lib.CoreTestCase;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import ui.*;
 
 
 
 public class DeeplinkTests extends CoreTestCase {
     private static final String
-    CHANGE_PIN = "legacy-android-app://ru.sberbankmobile_alpha/digitalpin/setup?source=chatbot&internal_source=audiohelper",
-    CARD_REISSUE = "legacy-android-app://ru.sberbankmobile_alpha/products/card/reissue?internal_source=audiohelper",
-    CARD_BLOCK = "legacy-android-app://ru.sberbankmobile_alpha/blockcard/add?internal_source=audiohelper",
+    CHANGE_PIN = "android-app://ru.sberbankmobile_alpha/digitalpin/setup?source=chatbot&internal_source=audiohelper",
+    CARD_REISSUE = "android-app://ru.sberbankmobile_alpha/products/card/reissue?internal_source=audiohelper",
+    CARD_BLOCK = "android-app://ru.sberbankmobile_alpha/blockcard/add?internal_source=audiohelper",
     CARD_UNBLOCKING = "android-app://ru.sberbankmobile_alpha/products/card/unblock?internal_source=audiohelper",
-    DEBIT_CARD_ORDER = "legacy-android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
-    CREDIT_CARD_ORDER = "legacy-android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
+    DEBIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
+    CREDIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
     CARD_VISIBILITY = "android-app://ru.sberbankmobile_alpha/visibilityRecovery?internal_source=audiohelper",
     SBER_PAY = "android-app://ru.sberbankmobile_alpha/sberpay/nfc/wallet?internal_source=audiohelper",
     OPEN_DEPOSIT = "android-app://ru.sberbankmobile_alpha/products/deposit?action=create&internal_source=audiohelper",
@@ -22,12 +23,12 @@ public class DeeplinkTests extends CoreTestCase {
     NOTIFICATION_LIST = "android-app://ru.sberbankmobile_alpha/pushes/notificationlist?internal_source=audiohelper",
     PUSHES = "legacy-android-app://ru.sberbankmobile_alpha/pushes/mobilebank?internal_source=audiohelper",
     POTREB_LOAN = "android-app://ru.sberbankmobile_alpha/consumerLoan?internal_source=audiohelper",
-    AUTO_LOAN = "legacy-android-app://ru.sberbankmobile_alpha/carloans/carloanrequest?internal_source=audiohelper",
+    AUTO_LOAN = "android-app://ru.sberbankmobile_alpha/carloans/carloanrequest?internal_source=audiohelper",
     REFIN_LOAN = "android-app://ru.sberbankmobile_alpha/refinloan?internal_source=audiohelper",
     CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",
     CREDIT_HISTORY = "android-app://ru.sberbankmobile_alpha/creditreportservice?internal_source=audiohelper",
     AUTO_PAYMENTS = "android-app://ru.sberbankmobile_alpha/payments/auto_payments?internal_source=audiohelper",
-    TARIFFS = "",
+    TARIFFS = "android-app://ru.sberbankmobile/android-app/ru.sberbankmobile/creditcard/tariffs",
     CALL_BANK = "android-app://ru.sberbankmobile_alpha/callbank/voip?surface=sbol_assist&operator=1&internal_source=audiohelper",
     MAIN_SCREEN = "android-app://ru.sberbankmobile_alpha/main?internal_source=audiohelper",
     HISTORY = "android-app://ru.sberbankmobile_alpha/history?internal_source=audiohelper",
@@ -37,7 +38,7 @@ public class DeeplinkTests extends CoreTestCase {
     DEBIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=DEBIT_CARD_STATEMENT&internal_source=audiohelper",
     CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
 
-@Test
+    @Test
     public void testMainScreen() throws InterruptedException {
     MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
     OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -47,8 +48,6 @@ public class DeeplinkTests extends CoreTestCase {
     OpenDialogAssistantPageObject.inputText(MAIN_SCREEN);
     OpenDialogAssistantPageObject.sendMessage();
     OpenDialogAssistantPageObject.sendMessage();
-
-
 
     Thread.sleep(5000);
     DeeplinkPageObject.clickLink();
@@ -88,7 +87,6 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
-
        Thread.sleep(5000);
        DeeplinkPageObject.clickLink();
        DeeplinkPageObject.denyCallButton();
@@ -105,8 +103,6 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
 
-
-
         Thread.sleep(5000);
         DeeplinkPageObject.clickLink();
         DeeplinkPageObject.backToAssistant();
@@ -118,14 +114,10 @@ public class DeeplinkTests extends CoreTestCase {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-
         OpenDialogAssistantPageObject.clickInputLine();
         OpenDialogAssistantPageObject.inputText(SBER_PAY);
         OpenDialogAssistantPageObject.sendMessage();
         OpenDialogAssistantPageObject.sendMessage();
-
-
-
 
         Thread.sleep(5000);
         DeeplinkPageObject.clickLink();
@@ -142,7 +134,7 @@ public class DeeplinkTests extends CoreTestCase {
     public void testHistory() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        
+
         OpenDialogAssistantPageObject.clickInputLine();
         OpenDialogAssistantPageObject.inputText(HISTORY);
         OpenDialogAssistantPageObject.sendMessage();
@@ -248,6 +240,33 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
+    @Test
+    public void testcardReissue() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CARD_REISSUE);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        if (driver.findElement(By.id("com.android.permissioncontroller:id/permission_deny_button")).isDisplayed()){
+            OpenDialogAssistantPageObject.voiceDeniPermission();
+        }
+        DeeplinkPageObject.clickLink();
+
+
+        DeeplinkPageObject.waitForCard();
+        DeeplinkPageObject.clickCard();
+        String buttontext = "Перевыпуск карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел перевыпуск",
+                DeeplinkPageObject.waitForCardReissueTitle().getAttribute("text"),
+                buttontext
+        );
+    }
+    
     @Test
     public void testListNotifications() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);

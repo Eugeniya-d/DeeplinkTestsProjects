@@ -147,7 +147,7 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    
+
     @Test
     public void testPushes() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -194,7 +194,13 @@ public class DeeplinkTests extends CoreTestCase {
             System.out.println(e.getMessage());
         }
         DeeplinkPageObject.clickLink();
-        DeeplinkPageObject.backToAssistant();
+
+        String buttontext = "Восстановить отображение";
+        Assert.assertEquals(
+                "Кнопка не привела в уведомления от банка",
+                DeeplinkPageObject.waitForVisibilityTitle().getAttribute("text"),
+                buttontext
+        );
     }
 
 

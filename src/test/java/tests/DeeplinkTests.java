@@ -147,7 +147,7 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    //добавить правильный локатор на уведомления от банка
+    
     @Test
     public void testPushes() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -168,7 +168,7 @@ public class DeeplinkTests extends CoreTestCase {
 
         DeeplinkPageObject.clickLink();
 
-        String buttontext = "Уведомления от банка";
+        String buttontext = "Push‑уведомления";
         Assert.assertEquals(
                 "Кнопка не привела в уведомления от банка",
                 DeeplinkPageObject.waitForPushNotificationTitle().getAttribute("text"),

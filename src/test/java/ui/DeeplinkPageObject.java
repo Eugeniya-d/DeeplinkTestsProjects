@@ -4,9 +4,10 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.nio.file.FileStore;
 
 public class DeeplinkPageObject extends MainPageObject {
+
+
 
     public DeeplinkPageObject(AppiumDriver driver) {
         super(driver);
@@ -20,6 +21,7 @@ public class DeeplinkPageObject extends MainPageObject {
             OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]",
             CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
             CARD_REISSUE_TITLE = "//*[contains(@text,'Перевыпуск карты')]",
+            PUSH_NOTIFICATION_TITLE = "//*[contains(@text,'Уведомления от банка')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
@@ -47,7 +49,7 @@ public class DeeplinkPageObject extends MainPageObject {
     }
 
     public void clickLink() {
-        waitForElementAndClick(By.xpath(LINK_CLICK),
+        waitForElementAndClick(By.xpath(LINK_CLICK1),
                 "Не открывается ссылка",
                 10);
     }
@@ -67,6 +69,11 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForCardReissueTitle() {
         return waitForElementPresent(By.xpath(CARD_REISSUE_TITLE),
+                10);
+    }
+
+    public WebElement waitForPushNotificationTitle() {
+        return waitForElementPresent(By.xpath(PUSH_NOTIFICATION_TITLE),
                 10);
     }
 }

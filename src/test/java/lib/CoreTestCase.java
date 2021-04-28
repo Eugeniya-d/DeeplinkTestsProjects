@@ -70,7 +70,7 @@ public class CoreTestCase extends TestCase {
         SignUpPageObject.signUpByLogin();
         SignUpPageObject.clickInputLoginString();
         Thread.sleep(1000);
-        SignUpPageObject.inputLogin("chatbotvoice");
+        SignUpPageObject.inputLogin("chatvoice2");
         SignUpPageObject.confirmLogin();
         SignUpPageObject.inputPassword();
         Thread.sleep(1000);
@@ -85,9 +85,6 @@ public class CoreTestCase extends TestCase {
                 buttontext
         );
         MainScreenPageObject.enterToAssistant();
-       /* if (driver.findElement(By.id("com.android.permissioncontroller:id/permission_deny_button")).isDisplayed()){
-            OpenDialogAssistantPageObject.voiceDeniPermission();
-        }*/
         OpenDialogAssistantPageObject.selectKeyboard();
     }
 
@@ -95,7 +92,7 @@ public class CoreTestCase extends TestCase {
 
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         driver.quit();
     }
 }

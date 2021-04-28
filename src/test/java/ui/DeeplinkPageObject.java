@@ -5,10 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 
-
 public class DeeplinkPageObject extends MainPageObject {
-
-
 
 
     public DeeplinkPageObject(AppiumDriver driver) {
@@ -23,8 +20,11 @@ public class DeeplinkPageObject extends MainPageObject {
             OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]",
             CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
             CARD_REISSUE_TITLE = "//*[contains(@text,'Перевыпуск карты')]",
-            CARD_VISIBILITY_TITLE = "//*[contains(@text,'Push‑уведомления')]",
-            PUSH_NOTIFICATION_TITLE = "//*[contains(@text,'Восстановить отображение')]",
+            CONTINUE_BUTTON = "android:id/button1",
+            CARD_CHANGE_PIN_TITLE = "//*[contains(@text,'Установка ПИН-кода')]",
+            PUSH_NOTIFICATION_TITLE = "//*[contains(@text,'Push‑уведомления')]",
+            CARD_VISIBILITY_TITLE = "//*[contains(@text,'Восстановить отображение')]",
+            DEPOSIT_TITLE = "//*[contains(@text,'Вклады и счета')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
@@ -34,7 +34,7 @@ public class DeeplinkPageObject extends MainPageObject {
     }
 
 
-    public void  waitForCard() {
+    public void waitForCard() {
         waitForElementPresent(By.id(CARD),
                 "Нет кнопки тип операции",
                 10);
@@ -46,6 +46,11 @@ public class DeeplinkPageObject extends MainPageObject {
                 10);
     }
 
+    public void clickContinue() {
+        waitForElementAndClick(By.id(CONTINUE_BUTTON),
+                "Не возможно нажать продолжить",
+                10);
+    }
     public WebElement waitForNotificationTitle() {
         return waitForElementPresent(By.xpath(NOTIFICATION_TITLE),
                 10);
@@ -75,6 +80,11 @@ public class DeeplinkPageObject extends MainPageObject {
                 10);
     }
 
+    public WebElement waitForCardChangePin() {
+        return waitForElementPresent(By.xpath(CARD_CHANGE_PIN_TITLE),
+                10);
+    }
+
     public WebElement waitForPushNotificationTitle() {
         return waitForElementPresent(By.xpath(PUSH_NOTIFICATION_TITLE),
                 10);
@@ -82,6 +92,11 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForVisibilityTitle() {
         return waitForElementPresent(By.xpath(CARD_VISIBILITY_TITLE),
+                10);
+    }
+
+    public WebElement waitForDepositTitle() {
+        return waitForElementPresent(By.xpath(DEPOSIT_TITLE),
                 10);
     }
 }

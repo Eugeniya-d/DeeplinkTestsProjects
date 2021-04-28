@@ -176,7 +176,7 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    //попробовать на клиенте с картами и добавить ассерт
+
     @Test
     public void testCardVisibility() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -204,7 +204,7 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
-    //проверить, добавить правильный ассерт
+
    @Test
     public void testChangePin() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -225,16 +225,17 @@ public class DeeplinkTests extends CoreTestCase {
        DeeplinkPageObject.clickLink();
        DeeplinkPageObject.waitForCard();
        DeeplinkPageObject.clickCard();
+       DeeplinkPageObject.clickContinue();
 
-       String buttontext = "Изменить пин-код";
+       String buttontext = "Установка ПИН-кода";
        Assert.assertEquals(
-               "Кнопка не привела в раздел перевыпуск",
-               DeeplinkPageObject.waitForCardReissueTitle().getAttribute("text"),
+               "Кнопка не привела в смена пин-кода",
+               DeeplinkPageObject.waitForCardChangePin().getAttribute("text"),
                buttontext
        );
     }
 
-    //добавить ассерты
+    //сервис временно не доступен 
     @Test
     public void testOpenDeposit() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -254,9 +255,9 @@ public class DeeplinkTests extends CoreTestCase {
 
         DeeplinkPageObject.clickLink();
 
-        String buttontext = "Тип операции";
+        String buttontext = "Вклады и счета";
         Assert.assertEquals(
-                "Кнопка не привела в раздел история операций",
+                "Кнопка не привела в раздел вклады и счета",
                 DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
                 buttontext
         );
@@ -288,9 +289,6 @@ public class DeeplinkTests extends CoreTestCase {
                 buttontext
         );
     }
-
-
-
 
 
  //птичка, не удалось подключить уведомления

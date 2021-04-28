@@ -33,6 +33,7 @@ public class DeeplinkPageObject extends MainPageObject {
             POTREB_LOAN_TITLE = "//*[contains(@text,'Предварительный расчет')]",
             AUTOPAYMENTS_TITLE = "//*[contains(@text,'Автоплатежи и автопереводы')]",
             CREDIT_CAPACITY = "//*[contains(@text,'Узнайте свой кредитный потенциал')]",
+            FRAUD = "//*[contains(@text,'Безопасность')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
@@ -132,6 +133,11 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForNotificationTitle() {
         return waitForElementPresent(By.xpath(NOTIFICATION_TITLE),
+                10);
+    }
+
+    public WebElement waitForFraud() {
+        return waitForElementPresent(By.xpath(FRAUD),
                 10);
     }
 }

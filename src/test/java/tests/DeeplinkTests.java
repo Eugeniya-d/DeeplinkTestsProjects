@@ -288,6 +288,33 @@ public class DeeplinkTests extends CoreTestCase {
                 buttontext
         );
     }
+
+    @Test
+    public void testFraud() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(FRAUD);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Безопасность";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел безопасность",
+                DeeplinkPageObject.waitForFraud().getAttribute("text"),
+                buttontext
+        );
+    }
     
     //временно не доступен
     @Test
@@ -522,33 +549,7 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    //Проверить , добавить правильные ассерты
-    @Test
-    public void testFraud() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(FRAUD);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
-
-        String buttontext = "Блокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                buttontext
-        );
-    }
 
     //Проверить , добавить правильные ассерты
     @Test

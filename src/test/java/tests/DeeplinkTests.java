@@ -262,6 +262,33 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
+    @Test
+    public void testCreditCapacity() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CREDIT_CAPACITY);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Узнайте свой кредитный потенциал";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел кредитный потенциал",
+                DeeplinkPageObject.waitForCreditCapacity().getAttribute("text"),
+                buttontext
+        );
+    }
+    
     //временно не доступен
     @Test
     public void testCreditCardOrder() throws InterruptedException {
@@ -434,33 +461,7 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    //Проверить , добавить правильные ассерты
-    @Test
-    public void testCreditCapacity() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CREDIT_CAPACITY);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
-
-        String buttontext = "Блокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                buttontext
-        );
-    }
 
     //сервис временно не доступен, проверить xpath ассерта
     @Test

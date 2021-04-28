@@ -32,6 +32,7 @@ public class DeeplinkPageObject extends MainPageObject {
             CARD_BLOCK = "//*[contains(@text,'Блокировка карты')]",
             POTREB_LOAN_TITLE = "//*[contains(@text,'Предварительный расчет')]",
             AUTOPAYMENTS_TITLE = "//*[contains(@text,'Автоплатежи и автопереводы')]",
+            CREDIT_CAPACITY = "//*[contains(@text,'Узнайте свой кредитный потенциал')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
@@ -58,10 +59,7 @@ public class DeeplinkPageObject extends MainPageObject {
                 "Не возможно нажать продолжить",
                 10);
     }
-    public WebElement waitForNotificationTitle() {
-        return waitForElementPresent(By.xpath(NOTIFICATION_TITLE),
-                10);
-    }
+
 
     public void clickLink() {
         waitForElementAndClick(By.xpath(LINK_CLICK1),
@@ -125,5 +123,15 @@ public class DeeplinkPageObject extends MainPageObject {
     public WebElement waitForAutopayments() {
         return waitForElementPresent(By.xpath(AUTOPAYMENTS_TITLE),
                 15);
+    }
+
+    public WebElement waitForCreditCapacity() {
+        return waitForElementPresent(By.xpath(CREDIT_CAPACITY),
+                15);
+    }
+
+    public WebElement waitForNotificationTitle() {
+        return waitForElementPresent(By.xpath(NOTIFICATION_TITLE),
+                10);
     }
 }

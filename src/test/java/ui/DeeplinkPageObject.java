@@ -4,8 +4,11 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.nio.file.FileStore;
+
 
 public class DeeplinkPageObject extends MainPageObject {
+
 
 
     public DeeplinkPageObject(AppiumDriver driver) {
@@ -25,6 +28,10 @@ public class DeeplinkPageObject extends MainPageObject {
             PUSH_NOTIFICATION_TITLE = "//*[contains(@text,'Push‑уведомления')]",
             CARD_VISIBILITY_TITLE = "//*[contains(@text,'Восстановить отображение')]",
             DEPOSIT_TITLE = "//*[contains(@text,'Вклады и счета')]",
+            CARD_UNBLOCK = "//*[contains(@text,'Разблокировка карты')]",
+            CARD_BLOCK = "//*[contains(@text,'Блокировка карты')]",
+            POTREB_LOAN_TITLE = "//*[contains(@text,'Предварительный расчет')]",
+            AUTOPAYMENTS_TITLE = "//*[contains(@text,'Автоплатежи и автопереводы')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
@@ -98,5 +105,25 @@ public class DeeplinkPageObject extends MainPageObject {
     public WebElement waitForDepositTitle() {
         return waitForElementPresent(By.xpath(DEPOSIT_TITLE),
                 10);
+    }
+
+    public WebElement waitForCardBlock() {
+        return waitForElementPresent(By.xpath(CARD_BLOCK),
+                10);
+    }
+
+    public WebElement waitForCardUnBlock() {
+        return waitForElementPresent(By.xpath(CARD_UNBLOCK),
+                10);
+    }
+
+    public WebElement waitForPotrebLoan() {
+        return waitForElementPresent(By.xpath(POTREB_LOAN_TITLE),
+                15);
+    }
+
+    public WebElement waitForAutopayments() {
+        return waitForElementPresent(By.xpath(AUTOPAYMENTS_TITLE),
+                15);
     }
 }

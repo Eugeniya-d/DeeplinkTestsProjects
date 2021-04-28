@@ -235,7 +235,378 @@ public class DeeplinkTests extends CoreTestCase {
        );
     }
 
-    //сервис временно не доступен 
+    @Test
+    public void testAutoPayments() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(AUTO_PAYMENTS);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Автоплатежи и автопереводы";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел автоплатежи",
+                DeeplinkPageObject.waitForAutopayments().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //временно не доступен
+    @Test
+    public void testCreditCardOrder() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CREDIT_CARD_ORDER);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Сейчас тех работы, тест и ассерты верны
+    @Test
+    public void testPotrebLoan() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(POTREB_LOAN);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Предварительный расчет";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел предварительный расчет",
+                DeeplinkPageObject.waitForPotrebLoan().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testAutoLoan() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(AUTO_LOAN);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testRefinLoan() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(REFIN_LOAN);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testTariffs() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(TARIFFS);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testCreditHistory() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CREDIT_HISTORY);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testCreditCapacity() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CREDIT_CAPACITY);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //сервис временно не доступен, проверить xpath ассерта
+    @Test
+    public void testBlockCard() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CARD_BLOCK);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+        DeeplinkPageObject.waitForCard();
+        DeeplinkPageObject.clickCard();
+
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testAppeal() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(APPEAL);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testFraud() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(FRAUD);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testStates() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(STATEMENTS_AND_REFERENCES);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //Проверить , добавить правильные ассерты
+    @Test
+    public void testCreditStatements() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CREDIT_STATEMENTS);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
+
+
+    //сервис временно не доступен, тест правильный
     @Test
     public void testOpenDeposit() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -259,6 +630,37 @@ public class DeeplinkTests extends CoreTestCase {
         Assert.assertEquals(
                 "Кнопка не привела в раздел вклады и счета",
                 DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    //ссылка-птичка
+    @Test
+    public void testUnblockCard() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(CARD_UNBLOCKING);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+        DeeplinkPageObject.waitForCard();
+        DeeplinkPageObject.clickCard();
+
+
+        String buttontext = "Разблокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел разблокировки карты ",
+                DeeplinkPageObject.waitForCardUnBlock().getAttribute("text"),
                 buttontext
         );
     }
@@ -290,6 +692,33 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
+    //Сервис временно недоступен
+    @Test
+    public void testDebitCardOrder() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(DEBIT_CARD_ORDER);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(1000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Блокировка карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел блокировки карты ",
+                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                buttontext
+        );
+    }
 
  //птичка, не удалось подключить уведомления
     @Test

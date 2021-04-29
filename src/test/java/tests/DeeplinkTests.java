@@ -15,7 +15,7 @@ public class DeeplinkTests extends CoreTestCase {
     CARD_BLOCK = "android-app://ru.sberbankmobile_alpha/blockcard/add?internal_source=audiohelper",
     CARD_UNBLOCKING = "android-app://ru.sberbankmobile_alpha/products/card/unblock?internal_source=audiohelper",
     DEBIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
-    CREDIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
+    CREDIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/creditcardorder/order?internal_source=audiohelper",
     CARD_VISIBILITY = "android-app://ru.sberbankmobile_alpha/visibilityRecovery?internal_source=audiohelper",
     SBER_PAY = "android-app://ru.sberbankmobile_alpha/sberpay/nfc/wallet?internal_source=audiohelper",
     OPEN_DEPOSIT = "android-app://ru.sberbankmobile_alpha/products/deposit?action=create&internal_source=audiohelper",
@@ -315,8 +315,35 @@ public class DeeplinkTests extends CoreTestCase {
                 buttontext
         );
     }
-    
-    //временно не доступен
+
+
+    @Test
+    public void testDebitCardOrder() throws InterruptedException {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(DEBIT_CARD_ORDER);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
+
+        Thread.sleep(3000);
+        try {
+            OpenDialogAssistantPageObject.denyAssistantNotification();
+        } catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        DeeplinkPageObject.clickLink();
+
+        String buttontext = "Дебетовые карты";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел дебетовые карты",
+                DeeplinkPageObject.waitForDebitCard().getAttribute("text"),
+                buttontext
+        );
+    }
+
     @Test
     public void testCreditCardOrder() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -336,10 +363,10 @@ public class DeeplinkTests extends CoreTestCase {
 
         DeeplinkPageObject.clickLink();
 
-        String buttontext = "Блокировка карты";
+        String buttontext = "Кредитные карты";
         Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                "Кнопка не привела в раздел кредитные карты ",
+                DeeplinkPageObject.waitForCreditCardOrder().getAttribute("text"),
                 buttontext
         );
     }
@@ -430,7 +457,7 @@ public class DeeplinkTests extends CoreTestCase {
 
 
 
-    //Проверить , добавить правильные ассерты
+    //Ссылка-птичка
     @Test
     public void testTariffs() throws InterruptedException {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -694,33 +721,7 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    //Сервис временно недоступен
-    @Test
-    public void testDebitCardOrder() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(DEBIT_CARD_ORDER);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
-
-        String buttontext = "Блокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                buttontext
-        );
-    }
 
  //птичка, не удалось подключить уведомления
     @Test

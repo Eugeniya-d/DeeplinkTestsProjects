@@ -69,7 +69,23 @@ public class DeeplinkPageObject extends MainPageObject {
                 "Не открывается ссылка",
                 10);
     }
+    public void link(){
+        if (driver.findElement(By.xpath(LINK_CLICK)).isDisplayed()){
+            this.clickLink();
+        }
+    }
 
+    public void link1(){
+        if (driver.findElement(By.xpath(LINK_CLICK1)).isDisplayed()){
+            this.clickLink1();
+        }
+    }
+
+    private void clickLink1() {
+        waitForElementAndClick(By.xpath(LINK_CLICK1),
+                "Не открывается ссылка",
+                10);
+    }
 
     public void denyCallButton() {
         waitForElementAndClick(By.id(DENY_CALL_BUTTON),

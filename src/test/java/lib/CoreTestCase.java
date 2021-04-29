@@ -4,11 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import junit.framework.TestCase;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ui.*;
 
@@ -70,20 +66,13 @@ public class CoreTestCase extends TestCase {
         SignUpPageObject.signUpByLogin();
         SignUpPageObject.clickInputLoginString();
         Thread.sleep(1000);
-        SignUpPageObject.inputLogin("chatvoice2");
+        SignUpPageObject.inputLogin("chatbotvoice");
         SignUpPageObject.confirmLogin();
         SignUpPageObject.inputPassword();
         Thread.sleep(1000);
         SignUpPageObject.inputPassword();
         SignUpPageObject.skipWarning();
 
-        String buttontext = "Главный";
-
-        Assert.assertEquals(
-                "Вход в СБОЛ ИФТ не был осуществлен",
-                MainScreenPageObject.waitForHomeButton().getAttribute("text"),
-                buttontext
-        );
         MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
     }

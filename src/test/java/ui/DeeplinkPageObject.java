@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.nio.file.FileStore;
 
 
 public class DeeplinkPageObject extends MainPageObject {
@@ -36,6 +35,7 @@ public class DeeplinkPageObject extends MainPageObject {
             FRAUD = "//*[contains(@text,'Безопасность')]",
             DEBIT_CARD_ORDER_TITLE = "//*[contains(@text,'Дебетовые карты')]",
             CREDIT_CARD_ORDER_TITLE = "//*[contains(@text,'Кредитные карты')]",
+            CREDIT_HISTORY = "//*[contains(@text,'Кредитная история')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
     public WebElement waitForOperationTypePresent() {
@@ -150,6 +150,11 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForCreditCardOrder() {
         return waitForElementPresent(By.xpath(CREDIT_CARD_ORDER_TITLE),
+                10);
+    }
+
+    public WebElement waitForCreditHistory() {
+        return waitForElementPresent(By.xpath(CREDIT_HISTORY),
                 10);
     }
 }

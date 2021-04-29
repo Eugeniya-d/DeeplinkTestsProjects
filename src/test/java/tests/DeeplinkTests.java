@@ -41,26 +41,9 @@ public class DeeplinkTests extends CoreTestCase {
     @Test
     public void testMainScreen() throws InterruptedException {
     MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
-    OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-    DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-    OpenDialogAssistantPageObject.clickInputLine();
-    OpenDialogAssistantPageObject.inputText(MAIN_SCREEN);
-    OpenDialogAssistantPageObject.sendMessage();
-    OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            DeeplinkPageObject.link();
-        } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
-            DeeplinkPageObject.link1();
-        }
+    HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.sendLink(MAIN_SCREEN);
+        HelperPageObject.tapLink();
 
         String buttontext = "Главный";
     Assert.assertEquals(
@@ -72,23 +55,11 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testcardReissue() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CARD_REISSUE);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
-
+        HelperPageObject.sendLink(CARD_REISSUE);
+        HelperPageObject.tapLink();
 
 
         DeeplinkPageObject.waitForCard();
@@ -102,46 +73,26 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
+
+
     @Test
     public void testCallBank() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CALL_BANK);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(CALL_BANK);
+        HelperPageObject.tapLink();
 
         DeeplinkPageObject.denyCallButton();
     }
 
     @Test
     public void testHistory() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(HISTORY);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(HISTORY);
+        HelperPageObject.tapLink();
 
 
         String buttontext = "Тип операции";
@@ -154,22 +105,11 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testListNotifications() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(NOTIFICATION_LIST);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(NOTIFICATION_LIST);
+        HelperPageObject.tapLink();
 
 
         String buttontext = "Уведомления";
@@ -183,23 +123,12 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testPushes() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(PUSHES);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(PUSHES);
+        HelperPageObject.tapLink();
 
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Push‑уведомления";
         Assert.assertEquals(
@@ -212,21 +141,12 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testCardVisibility() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CARD_VISIBILITY);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(CARD_VISIBILITY);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Восстановить отображение";
         Assert.assertEquals(
@@ -240,22 +160,13 @@ public class DeeplinkTests extends CoreTestCase {
 
    @Test
     public void testChangePin() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+       HelperPageObject HelperPageObject = new HelperPageObject(driver);
+       DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CHANGE_PIN);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+       HelperPageObject.sendLink(CHANGE_PIN);
+       HelperPageObject.tapLink();
 
-       Thread.sleep(1000);
-       try {
-           OpenDialogAssistantPageObject.denyAssistantNotification();
-       } catch (NoSuchElementException e){
-           System.out.println(e.getMessage());
-       }
 
-       DeeplinkPageObject.clickLink();
        DeeplinkPageObject.waitForCard();
        DeeplinkPageObject.clickCard();
        DeeplinkPageObject.clickContinue();
@@ -270,22 +181,12 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testAutoPayments() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(AUTO_PAYMENTS);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(AUTO_PAYMENTS);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Автоплатежи и автопереводы";
         Assert.assertEquals(
@@ -297,22 +198,12 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testCreditCapacity() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CREDIT_CAPACITY);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(CREDIT_CAPACITY);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Узнайте свой кредитный потенциал";
         Assert.assertEquals(
@@ -324,22 +215,12 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testFraud() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(FRAUD);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(FRAUD);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Безопасность";
         Assert.assertEquals(
@@ -352,22 +233,11 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testDebitCardOrder() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(DEBIT_CARD_ORDER);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(3000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(DEBIT_CARD_ORDER);
+        HelperPageObject.tapLink();
 
         String buttontext = "Дебетовые карты";
         Assert.assertEquals(
@@ -379,22 +249,12 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testCreditCardOrder() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CREDIT_CARD_ORDER);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(CREDIT_CARD_ORDER);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Кредитные карты";
         Assert.assertEquals(
@@ -407,22 +267,11 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testCreditHistory() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CREDIT_HISTORY);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(CREDIT_HISTORY);
+        HelperPageObject.tapLink();
 
         String buttontext = "Кредитная история";
         Assert.assertEquals(
@@ -434,25 +283,14 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testBlockCard() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CARD_BLOCK);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(CARD_BLOCK);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -465,22 +303,12 @@ public class DeeplinkTests extends CoreTestCase {
     //Сейчас тех работы, тест и ассерты верны
     @Test
     public void testPotrebLoan() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(POTREB_LOAN);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(POTREB_LOAN);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Предварительный расчет";
         Assert.assertEquals(
@@ -493,22 +321,11 @@ public class DeeplinkTests extends CoreTestCase {
     //ссылка-птичка
     @Test
     public void testAutoLoan() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(AUTO_LOAN);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(AUTO_LOAN);
+        HelperPageObject.tapLink();
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -521,22 +338,11 @@ public class DeeplinkTests extends CoreTestCase {
     //Временно недоступен
     @Test
     public void testRefinLoan() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(REFIN_LOAN);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(REFIN_LOAN);
+        HelperPageObject.tapLink();
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -551,26 +357,11 @@ public class DeeplinkTests extends CoreTestCase {
     //Ссылка-птичка
     @Test
     public void testTariffs() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(TARIFFS);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            DeeplinkPageObject.link();
-        } catch (NoSuchElementException e) {
-                System.out.println(e.getMessage());
-            }
-        DeeplinkPageObject.link1();
+        HelperPageObject.sendLink(TARIFFS);
+        HelperPageObject.tapLink();
 
             String buttontext = "Блокировка карты";
             Assert.assertEquals(
@@ -588,22 +379,11 @@ public class DeeplinkTests extends CoreTestCase {
     //Проверить , добавить правильные ассерты
     @Test
     public void testAppeal() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(APPEAL);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(APPEAL);
+        HelperPageObject.tapLink();
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -618,22 +398,12 @@ public class DeeplinkTests extends CoreTestCase {
     //Проверить , добавить правильные ассерты
     @Test
     public void testStates() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(STATEMENTS_AND_REFERENCES);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(STATEMENTS_AND_REFERENCES);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -646,22 +416,12 @@ public class DeeplinkTests extends CoreTestCase {
     //Проверить , добавить правильные ассерты// недоступен
     @Test
     public void testCreditStatements() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CREDIT_STATEMENTS);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(CREDIT_STATEMENTS);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -675,22 +435,11 @@ public class DeeplinkTests extends CoreTestCase {
     //сервис временно не доступен, тест правильный
     @Test
     public void testOpenDeposit() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(OPEN_DEPOSIT);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(OPEN_DEPOSIT);
+        HelperPageObject.tapLink();
 
         String buttontext = "Вклады и счета";
         Assert.assertEquals(
@@ -703,22 +452,12 @@ public class DeeplinkTests extends CoreTestCase {
     //ссылка-птичка
     @Test
     public void testUnblockCard() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(CARD_UNBLOCKING);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        HelperPageObject.sendLink(CARD_UNBLOCKING);
+        HelperPageObject.tapLink();
 
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-
-        DeeplinkPageObject.clickLink();
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
 
@@ -734,21 +473,11 @@ public class DeeplinkTests extends CoreTestCase {
     //ссылка-птичка
     @Test
     public void testSberPay() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(SBER_PAY);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(SBER_PAY);
+        HelperPageObject.tapLink();
 
         String buttontext = "Тип операции";
         Assert.assertEquals(
@@ -763,21 +492,11 @@ public class DeeplinkTests extends CoreTestCase {
  //птичка, не удалось подключить уведомления
     @Test
     public void testActivateNotifications() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(ACTIVATE_NOTIFICATION);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(ACTIVATE_NOTIFICATION);
+        HelperPageObject.tapLink();
 
         String buttontext = "Тип операции";
         Assert.assertEquals(
@@ -790,21 +509,11 @@ public class DeeplinkTests extends CoreTestCase {
     //сервис недоступен , нет проверки
     @Test
     public void testDebitStatements() throws InterruptedException {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(DEBIT_STATEMENTS);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
-
-        Thread.sleep(1000);
-        try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
-        } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-        }
-        DeeplinkPageObject.clickLink();
+        HelperPageObject.sendLink(DEBIT_STATEMENTS);
+        HelperPageObject.tapLink();
 
         String buttontext = "Тип операции";
         Assert.assertEquals(
@@ -813,5 +522,6 @@ public class DeeplinkTests extends CoreTestCase {
                 buttontext
         );
     }
+
 }
 

@@ -101,47 +101,47 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForCardReissueTitle() {
         return waitForElementPresent(By.xpath(CARD_REISSUE_TITLE),
-                10);
+                20);
     }
 
     public WebElement waitForCardChangePin() {
         return waitForElementPresent(By.xpath(CARD_CHANGE_PIN_TITLE),
-                10);
+                20);
     }
 
     public WebElement waitForPushNotificationTitle() {
         return waitForElementPresent(By.xpath(PUSH_NOTIFICATION_TITLE),
-                10);
+                20);
     }
 
     public WebElement waitForVisibilityTitle() {
         return waitForElementPresent(By.xpath(CARD_VISIBILITY_TITLE),
-                10);
+                20);
     }
 
     public WebElement waitForDepositTitle() {
         return waitForElementPresent(By.xpath(DEPOSIT_TITLE),
-                10);
+                20);
     }
 
     public WebElement waitForCardBlock() {
         return waitForElementPresent(By.xpath(CARD_BLOCK),
-                10);
+                20);
     }
 
     public WebElement waitForCardUnBlock() {
         return waitForElementPresent(By.xpath(CARD_UNBLOCK),
-                10);
+                20);
     }
 
     public WebElement waitForPotrebLoan() {
         return waitForElementPresent(By.xpath(POTREB_LOAN_TITLE),
-                15);
+                20);
     }
 
     public WebElement waitForAutopayments() {
         return waitForElementPresent(By.xpath(AUTOPAYMENTS_TITLE),
-                15);
+                20);
     }
 
     public WebElement waitForCreditCapacity() {

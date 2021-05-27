@@ -3,7 +3,6 @@ package tests;
 import lib.CoreTestCase;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.NoSuchElementException;
 import ui.*;
 
 
@@ -22,7 +21,7 @@ public class DeeplinkTests extends CoreTestCase {
     ACTIVATE_NOTIFICATION = "android-app://ru.sberbankmobile_alpha/mobilebank/activation?internal_source=audiohelper",
     NOTIFICATION_LIST = "android-app://ru.sberbankmobile_alpha/pushes/notificationlist?internal_source=audiohelper",
     PUSHES = "android-app://ru.sberbankmobile_alpha/pushes/mobilebank?internal_source=audiohelper",
-    POTREB_LOAN = "android-app://ru.sberbankmobile_alpha/consumerLoan?internal_source=audiohelper",
+    POTREB_LOAN = "android-app://ru.sberbankmobile_alpha/consumerLoan",
     AUTO_LOAN = "android-app://ru.sberbankmobile_alpha/carloans/carloanrequest?internal_source=audiohelper",
     REFIN_LOAN = "android-app://ru.sberbankmobile_alpha/refinloan?internal_source=audiohelper",
     CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",

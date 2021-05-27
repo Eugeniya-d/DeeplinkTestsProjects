@@ -52,5 +52,11 @@ public class OpenDialogAssistantPageObject extends MainPageObject {
                 15);
     }
 
+    public void waitForVoiceDeniPermission() {
+        waitForElementPresent(By.id(DENY_VOICE_PERMISSION),
+                "Кнопка согласиться не найдена",
+                15);
+    }
+
 }
 

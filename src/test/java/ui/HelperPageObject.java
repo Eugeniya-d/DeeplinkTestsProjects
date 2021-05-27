@@ -3,6 +3,9 @@ package ui;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.NoSuchElementException;
 
+import java.util.concurrent.TimeUnit;
+
+
 public class HelperPageObject extends MainPageObject{
     public HelperPageObject(AppiumDriver driver) {
         super(driver);
@@ -12,21 +15,21 @@ public class HelperPageObject extends MainPageObject{
     public void tapLink() throws InterruptedException {
         OpenDialogAssistantPageObject openDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject deeplinkPageObject = new DeeplinkPageObject(driver);
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        //Thread.sleep(1000);
         try {
             openDialogAssistantPageObject.denyAssistantNotification();
-            deeplinkPageObject.link1();
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
         }
-        deeplinkPageObject.link();
-       /* try {
+
+       try {
             deeplinkPageObject.link();
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
             deeplinkPageObject.link1();
-        }*/
+        }
     }
+
 
     public void sendLink(String linkName) {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);

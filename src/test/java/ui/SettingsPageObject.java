@@ -19,10 +19,22 @@ public class SettingsPageObject extends MainPageObject{
     private static final String BACK_TO_HOME_SCREEN_BUTTON ="ru.sberbankmobile_alpha:id/back_button";
     private static final String SERVER_BUTTON = "//*[contains(@text, 'Server')]";
     private static final String IFT_SERVER_BUTTON = "//*[contains(@text, 'ИФТ')]";
-
+    private static final String MENU_BUTTON= "//android.widget.ImageView[@content-desc='More options']";
 
     public void menuSettings(int x, int y){
         tapByCoordinates(x,y);
+    }
+
+    public void waitForMenuButton() {
+        waitForElementPresent(By.xpath(MENU_BUTTON),
+                "Не найдена  кнопка меню",
+                15);
+    }
+
+    public void clickMenuButton() {
+        waitForElementAndClick(By.xpath(MENU_BUTTON),
+                "Не найдена  кнопка меню",
+                15);
     }
 
     public void chooseTestingSettings() {

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 public class SignUpPageObject extends MainPageObject {
 
+
     public SignUpPageObject(AppiumDriver driver) {
         super(driver);
     }
@@ -15,7 +16,7 @@ public class SignUpPageObject extends MainPageObject {
     private static final String ENTER_BUTTON = "ru.sberbankmobile_alpha:id/enter_button";
     private static final String LOGIN_BUTTON = "//*[contains(@text, 'Логин')]";
     private static final String SKIP_BUTTON = "ru.sberbankmobile_alpha:id/skip_button";
-
+    private static final String INPUT_PASSWORD = "//*[contains(@text, 'Придумайте пароль')]";
 
     private static final String ONE = "ru.sberbankmobile_alpha:id/keyboard_number_1";
     private static final String ONE1 = "//android.widget.FrameLayout[@content-desc='1']";
@@ -50,6 +51,12 @@ public class SignUpPageObject extends MainPageObject {
                 15);
     }
 
+    public void waitForInputLogin() {
+        waitForElementPresent(By.xpath(LOGIN_BUTTON),
+                "Не найдена кнопка логин",
+                15);
+    }
+    
     public void inputLogin(String login) {
         waitForElementAndSendKeys(By.xpath(LOGIN_BUTTON),
                 "Невозможно ввести логин",
@@ -86,5 +93,11 @@ public class SignUpPageObject extends MainPageObject {
         waitForElementAndClick(By.id(SKIP_BUTTON),
                 "Не найдена кнопка пропустить",
                 40);
+    }
+
+    public void waitForInputPassword() {
+        waitForElementPresent(By.xpath(INPUT_PASSWORD),
+                "Не найдено 'Придумайте пароль'",
+                10);
     }
 }

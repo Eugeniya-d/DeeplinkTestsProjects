@@ -10,7 +10,6 @@ import ui.SignUpPageObject;
 
 public class LoginIFTSbolTest extends CoreTestCase {
 
-    @Test
     public void testLoginIFTSbol() throws InterruptedException {
         ComfirmPermissionsPageObject ComfirmPermissionsPageObject = new ComfirmPermissionsPageObject(driver);
         SettingsPageObject SettingsPageObject = new SettingsPageObject(driver);

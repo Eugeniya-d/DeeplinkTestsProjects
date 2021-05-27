@@ -33,7 +33,8 @@ public class CoreTestCase extends TestCase {
     }
 
 
-    public void openSbolIFTandAssistantDialog() throws InterruptedException {
+
+    public void openSbolIFTandAssistantDialog() {
         ComfirmPermissionsPageObject ComfirmPermissionsPageObject = new ComfirmPermissionsPageObject(driver);
         SettingsPageObject SettingsPageObject = new SettingsPageObject(driver);
         SignUpPageObject SignUpPageObject = new SignUpPageObject(driver);
@@ -44,15 +45,15 @@ public class CoreTestCase extends TestCase {
         ComfirmPermissionsPageObject.comfirmPermission();
         ComfirmPermissionsPageObject.allowPermission();
         ComfirmPermissionsPageObject.allowPermission();
-        Thread.sleep(1000);
+        ComfirmPermissionsPageObject.waitForAllowPermission();
         ComfirmPermissionsPageObject.allowPermission();
 
-        Thread.sleep(1000);
-        SettingsPageObject.menuSettings(1010, 159);
+        SettingsPageObject.waitForMenuButton();
+        SettingsPageObject.clickMenuButton();
         SettingsPageObject.selectServer();
         SettingsPageObject.selectIFT();
-        Thread.sleep(1000);
-        SettingsPageObject.menuSettings(1010, 159);
+        SettingsPageObject.waitForMenuButton();
+        SettingsPageObject.clickMenuButton();
         SettingsPageObject.chooseTestingSettings();
         SettingsPageObject.chooseTogglesButton();
         SettingsPageObject.searchToggles();
@@ -65,11 +66,11 @@ public class CoreTestCase extends TestCase {
 
         SignUpPageObject.signUpByLogin();
         SignUpPageObject.clickInputLoginString();
-        Thread.sleep(1000);
+        SignUpPageObject.waitForInputLogin();
         SignUpPageObject.inputLogin("chatbotvoice");
         SignUpPageObject.confirmLogin();
         SignUpPageObject.inputPassword();
-        Thread.sleep(1000);
+        SignUpPageObject.waitForInputPassword();
         SignUpPageObject.inputPassword();
         SignUpPageObject.skipWarning();
 

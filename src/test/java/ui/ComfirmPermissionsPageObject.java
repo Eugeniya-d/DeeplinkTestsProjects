@@ -25,6 +25,13 @@ public class ComfirmPermissionsPageObject extends MainPageObject{
                 15);
     }
 
+    public void waitForAllowPermission() {
+        waitForElementPresent(By.id(ALLOW_BUTTON),
+                "Не найдена  кнопка ALLOW " ,
+                15);
+    }
+
+
     public void allowPermission() {
         waitForElementAndClick(By.id(ALLOW_BUTTON),
                 "Не найдена  кнопка ALLOW " ,

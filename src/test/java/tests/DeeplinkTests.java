@@ -471,12 +471,13 @@ public class DeeplinkTests extends CoreTestCase {
 
     //ссылка-птичка
     @Test
-    public void testSberPay() throws InterruptedException {
+    public void testSberPay() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
         HelperPageObject.sendLink(SBER_PAY);
-        HelperPageObject.tapLink();
+        DeeplinkPageObject.waitForPayLink();
+        DeeplinkPageObject.tapToPayLink();
 
         String buttontext = "Тип операции";
         Assert.assertEquals(

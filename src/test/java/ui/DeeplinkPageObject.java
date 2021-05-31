@@ -5,9 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 
-
 public class DeeplinkPageObject extends MainPageObject {
-
 
 
     public DeeplinkPageObject(AppiumDriver driver) {
@@ -36,8 +34,9 @@ public class DeeplinkPageObject extends MainPageObject {
             DEBIT_CARD_ORDER_TITLE = "//*[contains(@text,'Дебетовые карты')]",
             CREDIT_CARD_ORDER_TITLE = "//*[contains(@text,'Кредитные карты')]",
             CREDIT_HISTORY = "//*[contains(@text,'Кредитная история')]",
+            BACK_TO_ASSISTANT = "//android.widget.ImageButton[@content-desc='Navigate up']",
+            LINK_PAY_ = "//*[contains(@resource-id,'ru.sberbankmobile_alpha:id/assistant_list_card_clickable_container')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
-
     public WebElement waitForOperationTypePresent() {
         return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
                 "Нет кнопки тип операции",
@@ -69,14 +68,15 @@ public class DeeplinkPageObject extends MainPageObject {
                 "Не открывается ссылка",
                 10);
     }
-    public void link(){
-        if (driver.findElement(By.xpath(LINK_CLICK)).isDisplayed()){
+
+    public void link() {
+        if (driver.findElement(By.xpath(LINK_CLICK)).isDisplayed()) {
             this.clickLink();
         }
     }
 
-    public void link1(){
-        if (driver.findElement(By.xpath(LINK_CLICK1)).isDisplayed()){
+    public void link1() {
+        if (driver.findElement(By.xpath(LINK_CLICK1)).isDisplayed()) {
             this.clickLink1();
         }
     }
@@ -93,12 +93,28 @@ public class DeeplinkPageObject extends MainPageObject {
                 15);
     }
 
-    public void backToAssistant() {
+  /*  public void backToAssistant() {
         waitForElementAndClick(By.xpath(BACK_TO_ASSISTANT_BUTTON),
+                "Не найдена кнопка возврата в ассистент",
+                10);
+    }*/
+
+    public void backToAssistantButton() {
+        waitForElementAndClick(By.xpath(BACK_TO_ASSISTANT),
                 "Не найдена кнопка возврата в ассистент",
                 10);
     }
 
+    public void waitForPayLink() {
+        waitForElementPresent(By.xpath(LINK_PAY_),
+                "Не найден локатор",
+                10);
+    }
+    public void tapToPayLink() {
+        waitForElementAndClick(By.xpath(LINK_PAY_),
+                "Не найден локатор",
+                10);
+    }
     public WebElement waitForCardReissueTitle() {
         return waitForElementPresent(By.xpath(CARD_REISSUE_TITLE),
                 20);

@@ -14,6 +14,7 @@ public class OpenDialogAssistantPageObject extends MainPageObject {
     private static final String TEXT_INPUT_LINE = "ru.sberbankmobile_alpha:id/input_panel_edit_text";
     private static final String SEND_MESSAGE_BUTTON = "ru.sberbankmobile_alpha:id/kpss_button_content_image";
     private static final String DENY_VOICE_PERMISSION = "com.android.permissioncontroller:id/permission_deny_button";
+    private static final String DENY_NOT_ASK_AGAIN_PERMISSION = "com.android.permissioncontroller:id/permission_deny_and_dont_ask_again_button";
     private static final String LAVASHAR = "ru.sberbankmobile_alpha:id/kpss_animated_view";
 
     public void selectKeyboard() {
@@ -51,12 +52,15 @@ public class OpenDialogAssistantPageObject extends MainPageObject {
                 "Кнопка согласиться не найдена",
                 15);
     }
-
+    public void voiceDeniNotAskAgainPermission() {
+        waitForElementAndClick(By.id(DENY_NOT_ASK_AGAIN_PERMISSION),
+                "Кнопка согласиться не найдена",
+                15);
+    }
     public void waitForVoiceDeniPermission() {
         waitForElementPresent(By.id(DENY_VOICE_PERMISSION),
                 "Кнопка согласиться не найдена",
                 15);
     }
-
 }
 

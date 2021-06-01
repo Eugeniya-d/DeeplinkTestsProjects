@@ -37,15 +37,17 @@ public class AllDeeplinkTest extends CoreTestCase {
             STATEMENTS_AND_REFERENCES = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?internal_source=audiohelper",
             DEBIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=DEBIT_CARD_STATEMENT&internal_source=audiohelper",
             CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
+
+
+
     @Test
-    public void testAllDeeplink() throws InterruptedException {
+    public void testAllDeeplink() {
         MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
-        HelperPageObject.sendLink(MAIN_SCREEN);
-        HelperPageObject.tapLink();
+        HelperPageObject.tapLink(MAIN_SCREEN);
 
         String buttontext = "Главный";
         Assert.assertEquals(
@@ -55,13 +57,7 @@ public class AllDeeplinkTest extends CoreTestCase {
         );
         MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
-
-        HelperPageObject.sendLink(CARD_REISSUE);
-        HelperPageObject.tapLink();
-        /*DeeplinkPageObject.waitForPayLink();
-        OpenDialogAssistantPageObject.waitForVoiceDeniPermission();
-        OpenDialogAssistantPageObject.voiceDeniPermission();
-        DeeplinkPageObject.link();*/
+        HelperPageObject.tapLink(CARD_REISSUE);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
         String buttontext1 = "Перевыпуск карты";
@@ -73,16 +69,17 @@ public class AllDeeplinkTest extends CoreTestCase {
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
-        HelperPageObject.sendLink(CALL_BANK);
-        HelperPageObject.tapLink();
-        /*DeeplinkPageObject.waitForPayLink();
-        //OpenDialogAssistantPageObject.waitForVoiceDeniPermission();
-        OpenDialogAssistantPageObject.voiceDeniNotAskAgainPermission();
-        DeeplinkPageObject.link();
-        */
-
+        HelperPageObject.tapLink(CALL_BANK);
         DeeplinkPageObject.denyCallButton();
 
+        HelperPageObject.sendTestingLink(HISTORY);
 
+        OpenDialogAssistantPageObject.selectKeyboard();
+        String buttontext2 = "Тип операции";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел история операций",
+                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
+                buttontext2
+        );
     }
 }

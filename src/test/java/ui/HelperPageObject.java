@@ -14,13 +14,18 @@ public class HelperPageObject extends MainPageObject {
     }
 
 
-    public void tapLink() {
-        OpenDialogAssistantPageObject openDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+    public void tapLink(String link) {
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject deeplinkPageObject = new DeeplinkPageObject(driver);
+
+        OpenDialogAssistantPageObject.clickInputLine();
+        OpenDialogAssistantPageObject.inputText(link);
+        OpenDialogAssistantPageObject.sendMessage();
+        OpenDialogAssistantPageObject.sendMessage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         try {
-            openDialogAssistantPageObject.denyAssistantNotification();
+            OpenDialogAssistantPageObject.denyAssistantNotification();
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
         }
@@ -36,17 +41,11 @@ public class HelperPageObject extends MainPageObject {
         } catch (Exception e) {
             System.out.println("Нет элемента ");
         }
-        //deeplinkPageObject.waitForPayLink();
-       // deeplinkPageObject.tapToPayLink();
-        //deeplinkPageObject.link1();
     }
 
 
-    public void sendLink(String linkName) {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(linkName);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+
+    public void sendTestingLink(String link) {
+        this.tapLink(link);
     }
 }

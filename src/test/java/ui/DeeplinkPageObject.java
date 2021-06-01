@@ -13,9 +13,7 @@ public class DeeplinkPageObject extends MainPageObject {
     }
 
     private static final String
-            DENY_CALL_BUTTON = "com.android.permissioncontroller:id/permission_deny_button",
-            LINK_CLICK1 = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
-            BACK_TO_ASSISTANT_BUTTON = "//*[contains(@text,'Тип операции')]",
+            DENY_CALL_BUTTON = "ru.sberbankmobile_alpha:id/ip_call_activity_hang_up_container",
             NOTIFICATION_TITLE = "//*[contains(@text,'Уведомления')]",
             OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]",
             CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
@@ -35,7 +33,7 @@ public class DeeplinkPageObject extends MainPageObject {
             CREDIT_CARD_ORDER_TITLE = "//*[contains(@text,'Кредитные карты')]",
             CREDIT_HISTORY = "//*[contains(@text,'Кредитная история')]",
             BACK_TO_ASSISTANT = "//android.widget.ImageButton[@content-desc='Navigate up']",
-            LINK_PAY_ = "//*[contains(@resource-id,'ru.sberbankmobile_alpha:id/assistant_list_card_clickable_container')]",
+            LINK_CLICK1 = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
 
 
@@ -95,28 +93,12 @@ public class DeeplinkPageObject extends MainPageObject {
                 15);
     }
 
-  /*  public void backToAssistant() {
-        waitForElementAndClick(By.xpath(BACK_TO_ASSISTANT_BUTTON),
-                "Не найдена кнопка возврата в ассистент",
-                10);
-    }*/
-
     public void backToAssistantButton() {
         waitForElementAndClick(By.xpath(BACK_TO_ASSISTANT),
                 "Не найдена кнопка возврата в ассистент",
                 10);
     }
 
-    public void waitForPayLink() {
-        waitForElementPresent(By.xpath(LINK_PAY_),
-                "Не найден локатор",
-                10);
-    }
-    public void tapToPayLink() {
-        waitForElementAndClick(By.xpath(LINK_PAY_),
-                "Не найден локатор",
-                10);
-    }
     public WebElement waitForCardReissueTitle() {
         return waitForElementPresent(By.xpath(CARD_REISSUE_TITLE),
                 20);

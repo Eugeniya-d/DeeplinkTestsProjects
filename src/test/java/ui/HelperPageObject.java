@@ -42,10 +42,4 @@ public class HelperPageObject extends MainPageObject {
             System.out.println("Нет элемента ");
         }
     }
-
-
-
-    public void sendTestingLink(String link) {
-        this.tapLink(link);
-    }
 }

@@ -41,7 +41,7 @@ public class DeeplinkTests extends CoreTestCase {
     public void testMainScreen() throws InterruptedException {
     MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
     HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.sendTestingLink(MAIN_SCREEN);
+        HelperPageObject.tapLink(MAIN_SCREEN);
 
         String buttontext = "Главный";
     Assert.assertEquals(
@@ -56,7 +56,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CARD_REISSUE);
+        HelperPageObject.tapLink(CARD_REISSUE);
 
 
         DeeplinkPageObject.waitForCard();
@@ -77,7 +77,7 @@ public class DeeplinkTests extends CoreTestCase {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CALL_BANK);
+        HelperPageObject.tapLink(CALL_BANK);
 
         DeeplinkPageObject.denyCallButton();
     }
@@ -87,7 +87,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(HISTORY);
+        HelperPageObject.tapLink(HISTORY);
 
 
         String buttontext = "Тип операции";
@@ -103,7 +103,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(NOTIFICATION_LIST);
+        HelperPageObject.tapLink(NOTIFICATION_LIST);
 
 
         String buttontext = "Уведомления";
@@ -120,7 +120,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(PUSHES);
+        HelperPageObject.tapLink(PUSHES);
 
 
         String buttontext = "Push‑уведомления";
@@ -137,7 +137,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CARD_VISIBILITY);
+        HelperPageObject.tapLink(CARD_VISIBILITY);
 
 
         String buttontext = "Восстановить отображение";
@@ -155,7 +155,7 @@ public class DeeplinkTests extends CoreTestCase {
        HelperPageObject HelperPageObject = new HelperPageObject(driver);
        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-       HelperPageObject.sendTestingLink(CHANGE_PIN);
+       HelperPageObject.tapLink(CHANGE_PIN);
 
 
        DeeplinkPageObject.waitForCard();
@@ -175,7 +175,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(AUTO_PAYMENTS);
+        HelperPageObject.tapLink(AUTO_PAYMENTS);
 
 
         String buttontext = "Автоплатежи и автопереводы";
@@ -191,7 +191,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CREDIT_CAPACITY);
+        HelperPageObject.tapLink(CREDIT_CAPACITY);
 
 
         String buttontext = "Узнайте свой кредитный потенциал";
@@ -207,7 +207,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(FRAUD);
+        HelperPageObject.tapLink(FRAUD);
 
 
         String buttontext = "Безопасность";
@@ -224,7 +224,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(DEBIT_CARD_ORDER);
+        HelperPageObject.tapLink(DEBIT_CARD_ORDER);
 
         String buttontext = "Дебетовые карты";
         Assert.assertEquals(
@@ -239,7 +239,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CREDIT_CARD_ORDER);
+        HelperPageObject.tapLink(CREDIT_CARD_ORDER);
 
 
         String buttontext = "Кредитные карты";
@@ -256,7 +256,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CREDIT_HISTORY);
+        HelperPageObject.tapLink(CREDIT_HISTORY);
 
         String buttontext = "Кредитная история";
         Assert.assertEquals(
@@ -271,7 +271,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CARD_BLOCK);
+        HelperPageObject.tapLink(CARD_BLOCK);
 
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
@@ -290,7 +290,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(POTREB_LOAN);
+        HelperPageObject.tapLink(POTREB_LOAN);
 
 
         String buttontext = "Предварительный расчет";
@@ -307,7 +307,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(AUTO_LOAN);
+        HelperPageObject.tapLink(AUTO_LOAN);
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -323,7 +323,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(REFIN_LOAN);
+        HelperPageObject.tapLink(REFIN_LOAN);
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -341,7 +341,7 @@ public class DeeplinkTests extends CoreTestCase {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
 
-        HelperPageObject.sendTestingLink(TARIFFS);
+        HelperPageObject.tapLink(TARIFFS);
 
         String buttontext = "Блокировка карты";
             Assert.assertEquals(
@@ -362,7 +362,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(APPEAL);
+        HelperPageObject.tapLink(APPEAL);
 
         String buttontext = "Блокировка карты";
         Assert.assertEquals(
@@ -380,7 +380,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(STATEMENTS_AND_REFERENCES);
+        HelperPageObject.tapLink(STATEMENTS_AND_REFERENCES);
 
 
         String buttontext = "Блокировка карты";
@@ -397,7 +397,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CREDIT_STATEMENTS);
+        HelperPageObject.tapLink(CREDIT_STATEMENTS);
 
 
         String buttontext = "Блокировка карты";
@@ -415,7 +415,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(OPEN_DEPOSIT);
+        HelperPageObject.tapLink(OPEN_DEPOSIT);
 
         String buttontext = "Вклады и счета";
         Assert.assertEquals(
@@ -431,7 +431,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(CARD_UNBLOCKING);
+        HelperPageObject.tapLink(CARD_UNBLOCKING);
 
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
@@ -451,7 +451,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(SBER_PAY);
+        HelperPageObject.tapLink(SBER_PAY);
 
         String buttontext = "Тип операции";
         Assert.assertEquals(
@@ -469,7 +469,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(ACTIVATE_NOTIFICATION);
+        HelperPageObject.tapLink(ACTIVATE_NOTIFICATION);
 
         String buttontext = "Тип операции";
         Assert.assertEquals(
@@ -485,7 +485,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
-        HelperPageObject.sendTestingLink(DEBIT_STATEMENTS);
+        HelperPageObject.tapLink(DEBIT_STATEMENTS);
 
         String buttontext = "Тип операции";
         Assert.assertEquals(

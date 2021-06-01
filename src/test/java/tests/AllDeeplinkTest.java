@@ -72,9 +72,11 @@ public class AllDeeplinkTest extends CoreTestCase {
         HelperPageObject.tapLink(CALL_BANK);
         DeeplinkPageObject.denyCallButton();
 
-        HelperPageObject.sendTestingLink(HISTORY);
-
         OpenDialogAssistantPageObject.selectKeyboard();
+        String pageSource = driver.getPageSource();
+        System.out.println(pageSource);
+        HelperPageObject.tapLink(HISTORY);
+
         String buttontext2 = "Тип операции";
         Assert.assertEquals(
                 "Кнопка не привела в раздел история операций",

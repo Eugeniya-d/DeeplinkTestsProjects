@@ -37,6 +37,8 @@ public class DeeplinkPageObject extends MainPageObject {
             BACK_TO_ASSISTANT = "//android.widget.ImageButton[@content-desc='Navigate up']",
             LINK_PAY_ = "//*[contains(@resource-id,'ru.sberbankmobile_alpha:id/assistant_list_card_clickable_container')]",
             LINK_CLICK = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[4]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout";
+
+
     public WebElement waitForOperationTypePresent() {
         return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
                 "Нет кнопки тип операции",

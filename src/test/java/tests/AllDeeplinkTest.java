@@ -57,10 +57,11 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject.selectKeyboard();
 
         HelperPageObject.sendLink(CARD_REISSUE);
-        DeeplinkPageObject.waitForPayLink();
+        HelperPageObject.tapLink();
+        /*DeeplinkPageObject.waitForPayLink();
         OpenDialogAssistantPageObject.waitForVoiceDeniPermission();
         OpenDialogAssistantPageObject.voiceDeniPermission();
-        DeeplinkPageObject.link();
+        DeeplinkPageObject.link();*/
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
         String buttontext1 = "Перевыпуск карты";
@@ -70,12 +71,16 @@ public class AllDeeplinkTest extends CoreTestCase {
                 buttontext1
         );
         DeeplinkPageObject.backToAssistantButton();
+
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperPageObject.sendLink(CALL_BANK);
-        DeeplinkPageObject.waitForPayLink();
+        HelperPageObject.tapLink();
+        /*DeeplinkPageObject.waitForPayLink();
         //OpenDialogAssistantPageObject.waitForVoiceDeniPermission();
         OpenDialogAssistantPageObject.voiceDeniNotAskAgainPermission();
         DeeplinkPageObject.link();
+        */
+
         DeeplinkPageObject.denyCallButton();
 
 

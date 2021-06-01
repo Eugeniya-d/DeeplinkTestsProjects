@@ -25,14 +25,20 @@ public class HelperPageObject extends MainPageObject {
             System.out.println(e.getMessage());
         }
 
-      /* try {
+       try {
             deeplinkPageObject.link();
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
+           System.out.println("Нет элемента "+ e.getMessage());
+        }
+
+        try {
             deeplinkPageObject.link1();
-        }*/
+        } catch (Exception e) {
+            System.out.println("Нет элемента ");
+        }
         //deeplinkPageObject.waitForPayLink();
        // deeplinkPageObject.tapToPayLink();
-        deeplinkPageObject.link1();
+        //deeplinkPageObject.link1();
     }
 
 

@@ -72,9 +72,8 @@ public class AllDeeplinkTest extends CoreTestCase {
         HelperPageObject.tapLink(CALL_BANK);
         DeeplinkPageObject.denyCallButton();
 
+
         OpenDialogAssistantPageObject.selectKeyboard();
-        String pageSource = driver.getPageSource();
-        System.out.println(pageSource);
         HelperPageObject.tapLink(HISTORY);
 
         String buttontext2 = "Тип операции";

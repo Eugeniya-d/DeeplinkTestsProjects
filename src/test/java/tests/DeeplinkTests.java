@@ -284,6 +284,52 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
+    @Test
+    public void testDebitStatements() throws InterruptedException {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        HelperPageObject.tapLink(DEBIT_STATEMENTS);
+
+        String buttontext = "Выписки и справки";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел Выписки и справки",
+                DeeplinkPageObject.waitForDebitAndStatements().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    @Test
+    public void testAutoLoan() throws InterruptedException {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        HelperPageObject.tapLink(AUTO_LOAN);
+
+        String buttontext = "Параметры автокредита";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел автокредит",
+                DeeplinkPageObject.waitForAutoLoan().getAttribute("text"),
+                buttontext
+        );
+    }
+
+    @Test
+    public void testAppeal() throws InterruptedException {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+
+        HelperPageObject.tapLink(APPEAL);
+
+        String buttontext = "Мои обращения";
+        Assert.assertEquals(
+                "Кнопка не привела в раздел мои обращения",
+                DeeplinkPageObject.waitForAppeal().getAttribute("text"),
+                buttontext
+        );
+    }
+
+
     //Сейчас тех работы, тест и ассерты верны
     @Test
     public void testPotrebLoan() throws InterruptedException {
@@ -301,34 +347,19 @@ public class DeeplinkTests extends CoreTestCase {
         );
     }
 
-    //ссылка-птичка
-    @Test
-    public void testAutoLoan() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(AUTO_LOAN);
-
-        String buttontext = "Блокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                buttontext
-        );
-    }
 
     //Временно недоступен
     @Test
-    public void testRefinLoan() throws InterruptedException {
+    public void testRefinLoan() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
 
         HelperPageObject.tapLink(REFIN_LOAN);
 
-        String buttontext = "Блокировка карты";
+        String buttontext = "Рефинансирование";
         Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
+                "Кнопка не привела в раздел рефинансирование",
+                DeeplinkPageObject.waitForRefin().getAttribute("text"),
                 buttontext
         );
     }
@@ -337,7 +368,7 @@ public class DeeplinkTests extends CoreTestCase {
 
     //Ссылка-птичка
     @Test
-    public void testTariffs() throws InterruptedException {
+    public void testTariffs() {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
 
@@ -350,27 +381,6 @@ public class DeeplinkTests extends CoreTestCase {
                     buttontext
             );
         }
-
-
-
-
-
-
-    //Проверить , добавить правильные ассерты
-    @Test
-    public void testAppeal() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(APPEAL);
-
-        String buttontext = "Блокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                buttontext
-        );
-    }
 
 
 
@@ -478,22 +488,5 @@ public class DeeplinkTests extends CoreTestCase {
                 buttontext
         );
     }
-
-    //сервис недоступен , нет проверки
-    @Test
-    public void testDebitStatements() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(DEBIT_STATEMENTS);
-
-        String buttontext = "Тип операции";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел история операций",
-                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
-                buttontext
-        );
-    }
-
 }
 

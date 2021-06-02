@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.nio.file.FileStore;
+
 
 public class DeeplinkPageObject extends MainPageObject {
 
@@ -16,8 +18,12 @@ public class DeeplinkPageObject extends MainPageObject {
             DENY_CALL_BUTTON = "ru.sberbankmobile_alpha:id/ip_call_activity_hang_up_container",
             NOTIFICATION_TITLE = "//*[contains(@text,'Уведомления')]",
             OPERATION_TYPE_BUTTON = "//*[contains(@text,'Тип операции')]",
+            DEBIT_SATEMENTS_TITLE = "//*[contains(@text,'Выписки и справки')]",
+            REFIN_TITLE = "//*[contains(@text,'Рефинансирование')]",
             CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
             CARD_REISSUE_TITLE = "//*[contains(@text,'Перевыпуск карты')]",
+            AUTO_LOAN_TITLE = "//*[contains(@text,'Параметры автокредита')]",
+            APPEAL_TITLE = "//*[contains(@text,'Мои обращения')]",
             CONTINUE_BUTTON = "android:id/button1",
             CARD_CHANGE_PIN_TITLE = "//*[contains(@text,'Установка ПИН-кода')]",
             PUSH_NOTIFICATION_TITLE = "//*[contains(@text,'Push‑уведомления')]",
@@ -40,9 +46,14 @@ public class DeeplinkPageObject extends MainPageObject {
     public WebElement waitForOperationTypePresent() {
         return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
                 "Нет кнопки тип операции",
-                10);
+                40);
     }
 
+    public WebElement waitForDebitAndStatements() {
+        return waitForElementPresent(By.xpath(DEBIT_SATEMENTS_TITLE),
+                "Нет кнопки тип операции",
+                40);
+    }
 
     public void waitForCard() {
         waitForElementPresent(By.id(CARD),
@@ -129,6 +140,11 @@ public class DeeplinkPageObject extends MainPageObject {
                 20);
     }
 
+    public WebElement waitForAutoLoan() {
+        return waitForElementPresent(By.xpath(AUTO_LOAN_TITLE),
+                20);
+    }
+
     public WebElement waitForCardUnBlock() {
         return waitForElementPresent(By.xpath(CARD_UNBLOCK),
                 20);
@@ -136,7 +152,7 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForPotrebLoan() {
         return waitForElementPresent(By.xpath(POTREB_LOAN_TITLE),
-                20);
+                40);
     }
 
     public WebElement waitForAutopayments() {
@@ -171,6 +187,16 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForCreditHistory() {
         return waitForElementPresent(By.xpath(CREDIT_HISTORY),
+                10);
+    }
+
+    public WebElement waitForAppeal() {
+        return waitForElementPresent(By.xpath(APPEAL_TITLE),
+                10);
+    }
+
+    public WebElement  waitForRefin() {
+        return waitForElementPresent(By.xpath(REFIN_TITLE),
                 10);
     }
 }

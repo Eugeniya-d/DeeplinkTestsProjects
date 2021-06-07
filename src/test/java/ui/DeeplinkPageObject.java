@@ -22,6 +22,7 @@ public class DeeplinkPageObject extends MainPageObject {
             REFIN_TITLE = "//*[contains(@text,'Рефинансирование')]",
             CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
             CARD_REISSUE_TITLE = "//*[contains(@text,'Перевыпуск карты')]",
+            ACTIVATE_NOTIFICATION_TITLE = "//*[contains(@text,'Подключение уведомлений')]",
             AUTO_LOAN_TITLE = "//*[contains(@text,'Параметры автокредита')]",
             APPEAL_TITLE = "//*[contains(@text,'Мои обращения')]",
             CONTINUE_BUTTON = "android:id/button1",
@@ -45,6 +46,12 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement waitForOperationTypePresent() {
         return waitForElementPresent(By.xpath(OPERATION_TYPE_BUTTON),
+                "Нет кнопки тип операции",
+                40);
+    }
+
+    public WebElement waitForActivateNotification() {
+        return waitForElementPresent(By.xpath(ACTIVATE_NOTIFICATION_TITLE),
                 "Нет кнопки тип операции",
                 40);
     }
@@ -197,6 +204,11 @@ public class DeeplinkPageObject extends MainPageObject {
 
     public WebElement  waitForRefin() {
         return waitForElementPresent(By.xpath(REFIN_TITLE),
+                10);
+    }
+
+    public WebElement waitForStatments() {
+        return waitForElementPresent(By.xpath(DEBIT_SATEMENTS_TITLE),
                 10);
     }
 }

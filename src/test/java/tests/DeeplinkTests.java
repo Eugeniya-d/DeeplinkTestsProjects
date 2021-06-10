@@ -1,481 +1,242 @@
 package tests;
 
 import lib.CoreTestCase;
-import org.junit.Assert;
 import org.junit.Test;
 import ui.*;
 
 
-
 public class DeeplinkTests extends CoreTestCase {
     private static final String
-    CHANGE_PIN = "android-app://ru.sberbankmobile_alpha/digitalpin/setup?source=chatbot&internal_source=audiohelper",
-    CARD_REISSUE = "android-app://ru.sberbankmobile_alpha/products/card/reissue?internal_source=audiohelper",
-    CARD_BLOCK = "android-app://ru.sberbankmobile_alpha/blockcard/add?internal_source=audiohelper",
-    CARD_UNBLOCKING = "android-app://ru.sberbankmobile_alpha/products/card/unblock?internal_source=audiohelper",
-    DEBIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
-    CREDIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/creditcardorder/order?internal_source=audiohelper",
-    CARD_VISIBILITY = "android-app://ru.sberbankmobile_alpha/visibilityRecovery?internal_source=audiohelper",
-    SBER_PAY = "android-app://ru.sberbankmobile_alpha/sberpay/nfc/wallet?internal_source=audiohelper",
-    OPEN_DEPOSIT = "android-app://ru.sberbankmobile_alpha/products/deposit?action=create&internal_source=audiohelper",
-    ACTIVATE_NOTIFICATION = "android-app://ru.sberbankmobile_alpha/mobilebank/activation?internal_source=audiohelper",
-    NOTIFICATION_LIST = "android-app://ru.sberbankmobile_alpha/pushes/notificationlist?internal_source=audiohelper",
-    PUSHES = "android-app://ru.sberbankmobile_alpha/pushes/mobilebank?internal_source=audiohelper",
-    POTREB_LOAN = "android-app://ru.sberbankmobile_alpha/consumerLoan",
-    AUTO_LOAN = "android-app://ru.sberbankmobile_alpha/carloans/carloanrequest?internal_source=audiohelper",
-    REFIN_LOAN = "android-app://ru.sberbankmobile_alpha/refinloan?internal_source=audiohelper",
-    CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",
-    CREDIT_HISTORY = "android-app://ru.sberbankmobile_alpha/creditreportservice?internal_source=audiohelper",
-    AUTO_PAYMENTS = "android-app://ru.sberbankmobile_alpha/payments/auto_payments?internal_source=audiohelper",
-    TARIFFS = "android-app://ru.sberbankmobile/android-app/ru.sberbankmobile/creditcard/tariffs",
-    CALL_BANK = "android-app://ru.sberbankmobile_alpha/callbank/voip?surface=sbol_assist&operator=1&internal_source=audiohelper",
-    MAIN_SCREEN = "android-app://ru.sberbankmobile_alpha/main?internal_source=audiohelper",
-    HISTORY = "android-app://ru.sberbankmobile_alpha/history?internal_source=audiohelper",
-    APPEAL = "android-app://ru.sberbankmobile_alpha/appeals?internal_source=audiohelper",
-    FRAUD = "android-app://ru.sberbankmobile_alpha/cseducation?internal_source=audiohelper",
-    STATEMENTS_AND_REFERENCES = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?internal_source=audiohelper",
-    DEBIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=DEBIT_CARD_STATEMENT&internal_source=audiohelper",
-    CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
+            CHANGE_PIN = "android-app://ru.sberbankmobile_alpha/digitalpin/setup?source=chatbot&internal_source=audiohelper",
+            CARD_REISSUE = "android-app://ru.sberbankmobile_alpha/products/card/reissue?internal_source=audiohelper",
+            CARD_BLOCK = "android-app://ru.sberbankmobile_alpha/blockcard/add?internal_source=audiohelper",
+            DEBIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
+            CREDIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/creditcardorder/order?internal_source=audiohelper",
+            CARD_VISIBILITY = "android-app://ru.sberbankmobile_alpha/visibilityRecovery?internal_source=audiohelper",
+            SBER_PAY = "android-app://ru.sberbankmobile_alpha/sberpay/nfc/wallet?internal_source=audiohelper",
+            OPEN_DEPOSIT = "android-app://ru.sberbankmobile_alpha/products/deposit?action=create&internal_source=audiohelper",
+            ACTIVATE_NOTIFICATION = "android-app://ru.sberbankmobile_alpha/mobilebank/activation?internal_source=audiohelper",
+            NOTIFICATION_LIST = "android-app://ru.sberbankmobile_alpha/pushes/notificationlist?internal_source=audiohelper",
+            PUSHES = "android-app://ru.sberbankmobile_alpha/pushes/mobilebank?internal_source=audiohelper",
+            POTREB_LOAN = "android-app://ru.sberbankmobile_alpha/consumerLoan",
+            AUTO_LOAN = "android-app://ru.sberbankmobile_alpha/carloans/carloanrequest?internal_source=audiohelper",
+            REFIN_LOAN = "android-app://ru.sberbankmobile_alpha/refinloan?internal_source=audiohelper",
+            CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",
+            CREDIT_HISTORY = "android-app://ru.sberbankmobile_alpha/creditreportservice?internal_source=audiohelper",
+            AUTO_PAYMENTS = "android-app://ru.sberbankmobile_alpha/payments/auto_payments?internal_source=audiohelper",
+            TARIFFS = "android-app://ru.sberbankmobile/android-app/ru.sberbankmobile/creditcard/tariffs",
+            CALL_BANK = "android-app://ru.sberbankmobile_alpha/callbank/voip?surface=sbol_assist&operator=1&internal_source=audiohelper",
+            MAIN_SCREEN = "android-app://ru.sberbankmobile_alpha/main?internal_source=audiohelper",
+            HISTORY = "android-app://ru.sberbankmobile_alpha/history?internal_source=audiohelper",
+            APPEAL = "android-app://ru.sberbankmobile_alpha/appeals?internal_source=audiohelper",
+            FRAUD = "android-app://ru.sberbankmobile_alpha/cseducation?internal_source=audiohelper",
+            STATEMENTS_AND_REFERENCES = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?internal_source=audiohelper",
+            DEBIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=DEBIT_CARD_STATEMENT&internal_source=audiohelper",
+            CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
 
     @Test
-    public void testMainScreen() throws InterruptedException {
-    MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
-    HelperPageObject HelperPageObject = new HelperPageObject(driver);
+    public void testMainScreen() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         HelperPageObject.tapLink(MAIN_SCREEN);
+        HelperPageObject.assertTitle("Главный");
 
-        String buttontext = "Главный";
-    Assert.assertEquals(
-            "Ссылка привела не на главный экран",
-            MainScreenPageObject.waitForHomeButton().getAttribute("text"),
-            buttontext
-    );
-}
+    }
 
     @Test
-    public void testCardReissue() throws InterruptedException {
+    public void testCardReissue() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(CARD_REISSUE);
-
-
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-        String buttontext = "Перевыпуск карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел перевыпуск",
-                DeeplinkPageObject.waitForCardReissueTitle().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Перевыпуск карты");
     }
 
 
-
-
     @Test
-    public void testCallBank() throws InterruptedException {
+    public void testCallBank() {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-
         HelperPageObject.tapLink(CALL_BANK);
-
         DeeplinkPageObject.denyCallButton();
     }
 
     @Test
-    public void testHistory() throws InterruptedException {
+    public void testHistory() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(HISTORY);
-
-
-        String buttontext = "Тип операции";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел история операций",
-                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Тип операции");
     }
 
     @Test
-    public void testListNotifications() throws InterruptedException {
+    public void testListNotifications() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(NOTIFICATION_LIST);
-
-
-        String buttontext = "Уведомления";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел уведомления",
-                DeeplinkPageObject.waitForNotificationTitle().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Уведомления");
     }
 
 
     @Test
-    public void testPushes() throws InterruptedException {
+    public void testPushes() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(PUSHES);
-
-
-        String buttontext = "Push‑уведомления";
-        Assert.assertEquals(
-                "Кнопка не привела в уведомления от банка",
-                DeeplinkPageObject.waitForPushNotificationTitle().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Push‑уведомления");
     }
 
 
     @Test
-    public void testCardVisibility() throws InterruptedException {
+    public void testCardVisibility() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(CARD_VISIBILITY);
-
-
-        String buttontext = "Восстановить отображение";
-        Assert.assertEquals(
-                "Кнопка не привела в уведомления от банка",
-                DeeplinkPageObject.waitForVisibilityTitle().getAttribute("text"),
-                buttontext
-        );
-    }
-
-
-
-   @Test
-    public void testChangePin() throws InterruptedException {
-       HelperPageObject HelperPageObject = new HelperPageObject(driver);
-       DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-       HelperPageObject.tapLink(CHANGE_PIN);
-
-
-       DeeplinkPageObject.waitForCard();
-       DeeplinkPageObject.clickCard();
-       DeeplinkPageObject.clickContinue();
-
-       String buttontext = "Установка ПИН-кода";
-       Assert.assertEquals(
-               "Кнопка не привела в смена пин-кода",
-               DeeplinkPageObject.waitForCardChangePin().getAttribute("text"),
-               buttontext
-       );
-    }
-
-    @Test
-    public void testAutoPayments() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(AUTO_PAYMENTS);
-
-
-        String buttontext = "Автоплатежи и автопереводы";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел автоплатежи",
-                DeeplinkPageObject.waitForAutopayments().getAttribute("text"),
-                buttontext
-        );
-    }
-
-    @Test
-    public void testCreditCapacity() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(CREDIT_CAPACITY);
-
-
-        String buttontext = "Узнайте свой кредитный потенциал";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел кредитный потенциал",
-                DeeplinkPageObject.waitForCreditCapacity().getAttribute("text"),
-                buttontext
-        );
-    }
-
-    @Test
-    public void testFraud() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(FRAUD);
-
-
-        String buttontext = "Безопасность";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел безопасность",
-                DeeplinkPageObject.waitForFraud().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Восстановить отображение");
     }
 
 
     @Test
-    public void testDebitCardOrder() throws InterruptedException {
+    public void testChangePin() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(DEBIT_CARD_ORDER);
-
-        String buttontext = "Дебетовые карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел дебетовые карты",
-                DeeplinkPageObject.waitForDebitCard().getAttribute("text"),
-                buttontext
-        );
-    }
-
-    @Test
-    public void testCreditCardOrder() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(CREDIT_CARD_ORDER);
-
-
-        String buttontext = "Кредитные карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел кредитные карты ",
-                DeeplinkPageObject.waitForCreditCardOrder().getAttribute("text"),
-                buttontext
-        );
-    }
-
-
-    @Test
-    public void testCreditHistory() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(CREDIT_HISTORY);
-
-        String buttontext = "Кредитная история";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел кредитная история",
-                DeeplinkPageObject.waitForCreditHistory().getAttribute("text"),
-                buttontext
-        );
-    }
-
-    @Test
-    public void testBlockCard() throws InterruptedException {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(CARD_BLOCK);
-
+        HelperPageObject.tapLink(CHANGE_PIN);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-
-        String buttontext = "Блокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел блокировки карты ",
-                DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                buttontext
-        );
+        DeeplinkPageObject.clickContinue();
+        HelperPageObject.assertTitle("Установка ПИН-кода");
     }
 
     @Test
-    public void testDebitStatements() throws InterruptedException {
+    public void testAutoPayments() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.tapLink(AUTO_PAYMENTS);
+        HelperPageObject.assertTitle("Автоплатежи и автопереводы");
+    }
+
+    @Test
+    public void testCreditCapacity() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.tapLink(CREDIT_CAPACITY);
+        HelperPageObject.assertTitle("Узнайте свой кредитный потенциал");
+    }
+
+    @Test
+    public void testFraud() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.tapLink(FRAUD);
+        HelperPageObject.assertTitle("Безопасность");
+    }
+
+
+    @Test
+    public void testDebitCardOrder() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.tapLink(DEBIT_CARD_ORDER);
+        HelperPageObject.assertTitle("Дебетовые карты");
+    }
+
+    @Test
+    public void testCreditCardOrder() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.tapLink(CREDIT_CARD_ORDER);
+        HelperPageObject.assertTitle("Кредитные карты");
+    }
+
+
+    @Test
+    public void testCreditHistory() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperPageObject.tapLink(CREDIT_HISTORY);
+        HelperPageObject.assertTitle("Кредитная история");
+    }
+
+    @Test
+    public void testBlockCard() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        HelperPageObject.tapLink(CARD_BLOCK);
+        DeeplinkPageObject.waitForCard();
+        DeeplinkPageObject.clickCard();
+        HelperPageObject.assertTitle("Блокировка карты");
+    }
 
+    @Test
+    public void testDebitStatements() {
+        HelperPageObject HelperPageObject = new HelperPageObject(driver);
         HelperPageObject.tapLink(DEBIT_STATEMENTS);
-
-        String buttontext = "Выписки и справки";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел Выписки и справки",
-                DeeplinkPageObject.waitForDebitAndStatements().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Выписки и справки");
     }
 
     @Test
-    public void testAutoLoan() throws InterruptedException {
+    public void testAutoLoan() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(AUTO_LOAN);
-
-        String buttontext = "Параметры автокредита";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел автокредит",
-                DeeplinkPageObject.waitForAutoLoan().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Параметры автокредита");
     }
 
     @Test
-    public void testAppeal() throws InterruptedException {
+    public void testAppeal() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(APPEAL);
-
-        String buttontext = "Мои обращения";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел мои обращения",
-                DeeplinkPageObject.waitForAppeal().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Мои обращения");
     }
 
     @Test
     public void testRefinLoan() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(REFIN_LOAN);
-
-        String buttontext = "Рефинансирование";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел рефинансирование",
-                DeeplinkPageObject.waitForRefin().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Рефинансирование");
     }
 
     @Test
-    public void testActivateNotifications() throws InterruptedException {
+    public void testActivateNotifications() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(ACTIVATE_NOTIFICATION);
-
-        String buttontext = "Подключение уведомлений";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел подключение уведомлениий",
-                DeeplinkPageObject.waitForActivateNotification().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Подключение уведомлений");
     }
 
     @Test
-    public void testCreditStatements() throws InterruptedException {
+    public void testCreditStatements() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(CREDIT_STATEMENTS);
-
-
-        String buttontext = "Выписки и справки";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел выписки и справки",
-                DeeplinkPageObject.waitForStatments().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Выписки и справки");
     }
 
     @Test
-    public void testStates() throws InterruptedException {
+    public void testStates() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(STATEMENTS_AND_REFERENCES);
-
-
-        String buttontext = "Выписки и справки";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел выписки и справки",
-                DeeplinkPageObject.waitForStatments().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Выписки и справки");
     }
 
-    //добавить правильные ассерты, нужна заблокированная карта
-    @Test
-    public void testUnblockCard() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
-        HelperPageObject.tapLink(CARD_UNBLOCKING);
-
-        DeeplinkPageObject.waitForCard();
-        DeeplinkPageObject.clickCard();
-
-
-        String buttontext = "Разблокировка карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел разблокировки карты ",
-                DeeplinkPageObject.waitForCardUnBlock().getAttribute("text"),
-                buttontext
-        );
-    }
 
     //Сейчас тех работы, тест и ассерты верны
     @Test
-    public void testPotrebLoan() throws InterruptedException {
+    public void testPotrebLoan() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(POTREB_LOAN);
-
-
-        String buttontext = "Предварительный расчет";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел предварительный расчет",
-                DeeplinkPageObject.waitForPotrebLoan().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Предварительный расчет");
     }
 
     //Ссылка-птичка
     @Test
     public void testTariffs() {
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-
         HelperPageObject.tapLink(TARIFFS);
-
-        String buttontext = "Блокировка карты";
-            Assert.assertEquals(
-                    "Кнопка не привела в раздел блокировки карты ",
-                    DeeplinkPageObject.waitForCardBlock().getAttribute("text"),
-                    buttontext
-            );
-        }
-
-
+        HelperPageObject.assertTitle("Тарифы");
+    }
 
     //сервис временно не доступен, тест правильный
     @Test
-    public void testOpenDeposit() throws InterruptedException {
+    public void testOpenDeposit() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(OPEN_DEPOSIT);
-
-        String buttontext = "Вклады и счета";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел вклады и счета",
-                DeeplinkPageObject.waitForDepositTitle().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Вклады и счета");
     }
 
     //ссылка-птичка
     @Test
     public void testSberPay() {
         HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-
         HelperPageObject.tapLink(SBER_PAY);
-
-        String buttontext = "Тип операции";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел история операций",
-                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
-                buttontext
-        );
+        HelperPageObject.assertTitle("Вклады и счета");
     }
 }
 

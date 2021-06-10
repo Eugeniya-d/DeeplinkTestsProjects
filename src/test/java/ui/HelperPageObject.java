@@ -1,6 +1,7 @@
 package ui;
 
 import io.appium.java_client.AppiumDriver;
+import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.util.concurrent.TimeUnit;
@@ -33,13 +34,22 @@ public class HelperPageObject extends MainPageObject {
        try {
             deeplinkPageObject.link();
         } catch (Exception e) {
-           System.out.println("Нет элемента "+ e.getMessage());
+           System.out.println(e.getMessage());
         }
 
         try {
             deeplinkPageObject.link1();
         } catch (Exception e) {
-            System.out.println("Нет элемента ");
+            System.out.println(e.getMessage());
         }
+    }
+
+    public void assertTitle(String titleText) {
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        Assert.assertEquals(
+                "Кнопка не привела в раздел " + titleText,
+                DeeplinkPageObject.waitForTitlePresent(titleText).getAttribute("text"),
+                titleText
+        );
     }
 }

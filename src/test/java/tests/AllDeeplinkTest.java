@@ -1,7 +1,6 @@
 package tests;
 
 import lib.CoreTestCase;
-import org.junit.Assert;
 import org.junit.Test;
 import ui.DeeplinkPageObject;
 import ui.HelperPageObject;
@@ -48,24 +47,14 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
         HelperPageObject.tapLink(MAIN_SCREEN);
+        HelperPageObject.assertTitle("Главный");
 
-        String buttontext = "Главный";
-        Assert.assertEquals(
-                "Ссылка привела не на главный экран",
-                MainScreenPageObject.waitForHomeButton().getAttribute("text"),
-                buttontext
-        );
         MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperPageObject.tapLink(CARD_REISSUE);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-        String buttontext1 = "Перевыпуск карты";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел перевыпуск",
-                DeeplinkPageObject.waitForCardReissueTitle().getAttribute("text"),
-                buttontext1
-        );
+        HelperPageObject.assertTitle("Перевыпуск карты");
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
@@ -75,12 +64,6 @@ public class AllDeeplinkTest extends CoreTestCase {
 
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperPageObject.tapLink(HISTORY);
-
-        String buttontext2 = "Тип операции";
-        Assert.assertEquals(
-                "Кнопка не привела в раздел история операций",
-                DeeplinkPageObject.waitForOperationTypePresent().getAttribute("text"),
-                buttontext2
-        );
+        HelperPageObject.assertTitle("Тип операции");
     }
 }

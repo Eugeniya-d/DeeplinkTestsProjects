@@ -31,6 +31,9 @@ public class HelperPageObject extends MainPageObject {
             System.out.println(e.getMessage());
         }
 
+        String pageSource = driver.getPageSource();
+        System.out.println(pageSource);
+
        try {
             deeplinkPageObject.link();
         } catch (Exception e) {

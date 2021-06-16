@@ -37,15 +37,13 @@ public class AllDeeplinkTest extends CoreTestCase {
             DEBIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=DEBIT_CARD_STATEMENT&internal_source=audiohelper",
             CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
 
-
+    MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
+    HelperPageObject HelperPageObject = new HelperPageObject(driver);
+    DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+    OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
     @Test
     public void testAllDeeplink() {
-        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-
         HelperPageObject.tapLink(MAIN_SCREEN);
         HelperPageObject.assertTitle("Главный");
 
@@ -61,9 +59,26 @@ public class AllDeeplinkTest extends CoreTestCase {
         HelperPageObject.tapLink(CALL_BANK);
         DeeplinkPageObject.denyCallButton();
 
-
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperPageObject.tapLink(HISTORY);
         HelperPageObject.assertTitle("Тип операции");
+        DeeplinkPageObject.backToAssistantButton();
+    }
+
+    @Test
+    public void testAllDeeplink1() {
+        HelperPageObject.tapLink(HISTORY);
+        HelperPageObject.assertTitle("Тип операции");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperPageObject.tapLink(NOTIFICATION_LIST);
+        HelperPageObject.assertTitle("Уведомления");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperPageObject.tapLink(PUSHES);
+        HelperPageObject.assertTitle("Push‑уведомления");
+
     }
 }

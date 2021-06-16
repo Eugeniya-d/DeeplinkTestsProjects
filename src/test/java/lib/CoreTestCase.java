@@ -67,7 +67,7 @@ public class CoreTestCase extends TestCase {
         SignUpPageObject.signUpByLogin();
         SignUpPageObject.clickInputLoginString();
         SignUpPageObject.waitForInputLogin();
-        SignUpPageObject.inputLogin("chatbotvoice");
+        SignUpPageObject.inputLogin("chatvoice4");
         SignUpPageObject.confirmLogin();
         SignUpPageObject.inputPassword();
         SignUpPageObject.waitForInputPassword();

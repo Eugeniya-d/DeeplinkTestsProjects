@@ -3,7 +3,7 @@ package tests;
 import lib.CoreTestCase;
 import org.junit.Test;
 import ui.DeeplinkPageObject;
-import ui.HelperPageObject;
+import methods.HelperMethods;
 import ui.MainScreenPageObject;
 import ui.OpenDialogAssistantPageObject;
 
@@ -37,48 +37,48 @@ public class AllDeeplinkTest extends CoreTestCase {
             DEBIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=DEBIT_CARD_STATEMENT&internal_source=audiohelper",
             CREDIT_STATEMENTS = "android-app://ru.sberbankmobile_alpha/StatementsAndReferences?statement=CREDIT_CARD_STATEMENT&internal_source=audiohelper";
 
-    MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
-    HelperPageObject HelperPageObject = new HelperPageObject(driver);
-    DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-    OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
     @Test
     public void testAllDeeplink() {
-        HelperPageObject.tapLink(MAIN_SCREEN);
-        HelperPageObject.assertTitle("Главный");
+        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        HelperMethods.tapLink(MAIN_SCREEN);
+        HelperMethods.assertTitle("Главный");
 
         MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
-        HelperPageObject.tapLink(CARD_REISSUE);
+        HelperMethods.tapLink(CARD_REISSUE);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-        HelperPageObject.assertTitle("Перевыпуск карты");
+        HelperMethods.assertTitle("Перевыпуск карты");
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
-        HelperPageObject.tapLink(CALL_BANK);
+        HelperMethods.tapLink(CALL_BANK);
         DeeplinkPageObject.denyCallButton();
-
-        OpenDialogAssistantPageObject.selectKeyboard();
-        HelperPageObject.tapLink(HISTORY);
-        HelperPageObject.assertTitle("Тип операции");
-        DeeplinkPageObject.backToAssistantButton();
     }
 
     @Test
     public void testAllDeeplink1() {
-        HelperPageObject.tapLink(HISTORY);
-        HelperPageObject.assertTitle("Тип операции");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(PUSHES);
+        HelperMethods.assertTitle("Push‑уведомления");
+
+        HelperMethods.tapLink(HISTORY);
+        HelperMethods.assertTitle("Тип операции");
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
-        HelperPageObject.tapLink(NOTIFICATION_LIST);
-        HelperPageObject.assertTitle("Уведомления");
+        HelperMethods.tapLink(NOTIFICATION_LIST);
+        HelperMethods.assertTitle("Уведомления");
         DeeplinkPageObject.backToAssistantButton();
-
-        OpenDialogAssistantPageObject.selectKeyboard();
-        HelperPageObject.tapLink(PUSHES);
-        HelperPageObject.assertTitle("Push‑уведомления");
 
     }
 }

@@ -1,6 +1,7 @@
 package tests;
 
 import lib.CoreTestCase;
+import methods.HelperMethods;
 import org.junit.Test;
 import ui.*;
 
@@ -36,207 +37,261 @@ public class DeeplinkTests extends CoreTestCase {
 
     @Test
     public void testMainScreen() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(MAIN_SCREEN);
-        HelperPageObject.assertTitle("Главный");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(MAIN_SCREEN);
+        HelperMethods.assertTitle("Главный");
 
     }
 
     @Test
     public void testCardReissue() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        HelperPageObject.tapLink(CARD_REISSUE);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CARD_REISSUE);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-        HelperPageObject.assertTitle("Перевыпуск карты");
+        HelperMethods.assertTitle("Перевыпуск карты");
     }
 
 
     @Test
     public void testCallBank() {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(CALL_BANK);
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CALL_BANK);
         DeeplinkPageObject.denyCallButton();
     }
 
     @Test
     public void testHistory() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(HISTORY);
-        HelperPageObject.assertTitle("Тип операции");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(HISTORY);
+        HelperMethods.assertTitle("Тип операции");
     }
 
     @Test
     public void testListNotifications() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(NOTIFICATION_LIST);
-        HelperPageObject.assertTitle("Уведомления");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(NOTIFICATION_LIST);
+        HelperMethods.assertTitle("Уведомления");
     }
 
 
     @Test
     public void testPushes() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(PUSHES);
-        HelperPageObject.assertTitle("Push‑уведомления");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(PUSHES);
+        HelperMethods.assertTitle("Push‑уведомления");
     }
 
 
     @Test
     public void testCardVisibility() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(CARD_VISIBILITY);
-        HelperPageObject.assertTitle("Восстановить отображение");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CARD_VISIBILITY);
+        HelperMethods.assertTitle("Восстановить отображение");
     }
 
 
     @Test
     public void testChangePin() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        HelperPageObject.tapLink(CHANGE_PIN);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CHANGE_PIN);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
         DeeplinkPageObject.clickContinue();
-        HelperPageObject.assertTitle("Установка ПИН-кода");
+        HelperMethods.assertTitle("Установка ПИН-кода");
     }
 
     @Test
     public void testAutoPayments() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(AUTO_PAYMENTS);
-        HelperPageObject.assertTitle("Автоплатежи и автопереводы");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(AUTO_PAYMENTS);
+        HelperMethods.assertTitle("Автоплатежи и автопереводы");
     }
 
     @Test
     public void testCreditCapacity() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(CREDIT_CAPACITY);
-        HelperPageObject.assertTitle("Узнайте свой кредитный потенциал");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CREDIT_CAPACITY);
+        HelperMethods.assertTitle("Узнайте свой кредитный потенциал");
     }
 
     @Test
     public void testFraud() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(FRAUD);
-        HelperPageObject.assertTitle("Безопасность");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(FRAUD);
+        HelperMethods.assertTitle("Безопасность");
     }
 
 
     @Test
     public void testDebitCardOrder() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(DEBIT_CARD_ORDER);
-        HelperPageObject.assertTitle("Дебетовые карты");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(DEBIT_CARD_ORDER);
+        HelperMethods.assertTitle("Дебетовые карты");
     }
 
     @Test
     public void testCreditCardOrder() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(CREDIT_CARD_ORDER);
-        HelperPageObject.assertTitle("Кредитные карты");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CREDIT_CARD_ORDER);
+        HelperMethods.assertTitle("Кредитные карты");
     }
 
 
     @Test
     public void testCreditHistory() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(CREDIT_HISTORY);
-        HelperPageObject.assertTitle("Кредитная история");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CREDIT_HISTORY);
+        HelperMethods.assertTitle("Кредитная история");
     }
 
     @Test
     public void testBlockCard() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
+        HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
-        HelperPageObject.tapLink(CARD_BLOCK);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CARD_BLOCK);
         DeeplinkPageObject.waitForCard();
         DeeplinkPageObject.clickCard();
-        HelperPageObject.assertTitle("Блокировка карты");
+        HelperMethods.assertTitle("Блокировка карты");
     }
 
     @Test
     public void testDebitStatements() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(DEBIT_STATEMENTS);
-        HelperPageObject.assertTitle("Выписки и справки");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(DEBIT_STATEMENTS);
+        HelperMethods.assertTitle("Выписки и справки");
     }
 
     @Test
     public void testAutoLoan() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(AUTO_LOAN);
-        HelperPageObject.assertTitle("Параметры автокредита");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(AUTO_LOAN);
+        HelperMethods.assertTitle("Параметры автокредита");
     }
 
     @Test
     public void testAppeal() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(APPEAL);
-        HelperPageObject.assertTitle("Мои обращения");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(APPEAL);
+        HelperMethods.assertTitle("Мои обращения");
     }
 
     @Test
     public void testRefinLoan() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(REFIN_LOAN);
-        HelperPageObject.assertTitle("Рефинансирование");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(REFIN_LOAN);
+        HelperMethods.assertTitle("Рефинансирование");
     }
 
     @Test
     public void testActivateNotifications() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(ACTIVATE_NOTIFICATION);
-        HelperPageObject.assertTitle("Подключение уведомлений");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
+        HelperMethods.assertTitle("Подключение уведомлений");
     }
 
     @Test
     public void testCreditStatements() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(CREDIT_STATEMENTS);
-        HelperPageObject.assertTitle("Выписки и справки");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CREDIT_STATEMENTS);
+        HelperMethods.assertTitle("Выписки и справки");
     }
 
     @Test
     public void testStates() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(STATEMENTS_AND_REFERENCES);
-        HelperPageObject.assertTitle("Выписки и справки");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(STATEMENTS_AND_REFERENCES);
+        HelperMethods.assertTitle("Выписки и справки");
     }
 
 
     //Сейчас тех работы, тест и ассерты верны
     @Test
     public void testPotrebLoan() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(POTREB_LOAN);
-        HelperPageObject.assertTitle("Предварительный расчет");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(POTREB_LOAN);
+        HelperMethods.assertTitle("Предварительный расчет");
+    }
+
+
+    //сервис временно не доступен, тест правильный
+    @Test
+    public void testOpenDeposit() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(OPEN_DEPOSIT);
+        HelperMethods.assertTitle("Вклады и счета");
     }
 
     //Ссылка-птичка
     @Test
     public void testTariffs() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(TARIFFS);
-        HelperPageObject.assertTitle("Тарифы");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(TARIFFS);
+        HelperMethods.assertTitle("Тарифы");
     }
 
-    //сервис временно не доступен, тест правильный
-    @Test
-    public void testOpenDeposit() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(OPEN_DEPOSIT);
-        HelperPageObject.assertTitle("Вклады и счета");
-    }
-
+    
     //ссылка-птичка
     @Test
     public void testSberPay() {
-        HelperPageObject HelperPageObject = new HelperPageObject(driver);
-        HelperPageObject.tapLink(SBER_PAY);
-        HelperPageObject.assertTitle("Вклады и счета");
+        HelperMethods HelperMethods = new HelperMethods(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(SBER_PAY);
+        HelperMethods.assertTitle("Вклады и счета");
     }
 }
 

@@ -1,6 +1,7 @@
 package methods;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import ui.*;
@@ -77,7 +78,7 @@ public class HelperMethods extends MainPageObject {
         SettingsPageObject.chooseTestingSettings();
         SettingsPageObject.chooseTogglesButton();
         SettingsPageObject.searchToggles();
-        SettingsPageObject.inputToggleName("ATHENADEV_FAKE_VPS_ENABLED");
+        SettingsPageObject.inputToggleName("FAKE");
         SettingsPageObject.activateToggle();
         SettingsPageObject.closeSearchButton();
         SettingsPageObject.closeSearchButton();

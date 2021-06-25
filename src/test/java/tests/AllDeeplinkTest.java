@@ -45,6 +45,7 @@ public class AllDeeplinkTest extends CoreTestCase {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
         HelperMethods.tapLink(MAIN_SCREEN);
         HelperMethods.assertTitle("Главный");
 
@@ -67,18 +68,146 @@ public class AllDeeplinkTest extends CoreTestCase {
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
-        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
         HelperMethods.tapLink(PUSHES);
         HelperMethods.assertTitle("Push‑уведомления");
-
-        HelperMethods.tapLink(HISTORY);
-        HelperMethods.assertTitle("Тип операции");
         DeeplinkPageObject.backToAssistantButton();
+
 
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(NOTIFICATION_LIST);
         HelperMethods.assertTitle("Уведомления");
         DeeplinkPageObject.backToAssistantButton();
 
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(HISTORY);
+        HelperMethods.assertTitle("Тип операции");
+    }
+
+    @Test
+    public void testAllDeeplink2() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(CARD_VISIBILITY);
+        HelperMethods.assertTitle("Восстановить отображение");
+        DeeplinkPageObject.backToAssistantButton();
+
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(AUTO_PAYMENTS);
+        HelperMethods.assertTitle("Автоплатежи и автопереводы");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(CHANGE_PIN);
+        DeeplinkPageObject.waitForCard();
+        HelperMethods.assertTitle("Выберите карту для установки ПИН-кода");
+    }
+
+    @Test
+    public void testAllDeeplink3() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
+        HelperMethods.tapLink(CREDIT_CAPACITY);
+        HelperMethods.assertTitle("Узнайте свой кредитный потенциал");
+        DeeplinkPageObject.backToAssistantButton();
+
+        MainScreenPageObject.enterToAssistant();
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(FRAUD);
+        HelperMethods.assertTitle("Безопасность");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(DEBIT_CARD_ORDER);
+        HelperMethods.assertTitle("Дебетовые карты");
+    }
+
+    public void testAllDeeplink4() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(CREDIT_CARD_ORDER);
+        HelperMethods.assertTitle("Кредитные карты");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(CREDIT_HISTORY);
+        HelperMethods.assertTitle("Кредитная история");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(CARD_BLOCK);
+        DeeplinkPageObject.waitForCard();
+        HelperMethods.assertTitle("Карты");
+    }
+
+    public void testAllDeeplink5() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(DEBIT_STATEMENTS);
+        HelperMethods.assertTitle("Выписка");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(AUTO_LOAN);
+        HelperMethods.assertTitle("Параметры автокредита");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(APPEAL);
+        HelperMethods.assertTitle("Мои обращения");
+    }
+
+    public void testAllDeeplink6() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(REFIN_LOAN);
+        HelperMethods.assertTitle("Рефинансирование");;
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
+        HelperMethods.assertTitle("Подключение уведомлений");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(CREDIT_STATEMENTS);
+        HelperMethods.assertTitle("Выписки и справки");
+    }
+
+    public void testAllDeeplink7() {
+        HelperMethods HelperMethods = new HelperMethods(driver);
+        DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
+        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+
+        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.tapLink(STATEMENTS_AND_REFERENCES);
+        HelperMethods.assertTitle("Выписки и справки");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(POTREB_LOAN);
+        HelperMethods.assertTitle("Предварительный расчёт");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(OPEN_DEPOSIT);
+        HelperMethods.assertTitle("Подбор вклада");
     }
 }

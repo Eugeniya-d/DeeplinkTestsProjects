@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import lib.CoreTestCase;
 import methods.HelperMethods;
 import org.junit.Test;
@@ -25,7 +27,7 @@ public class DeeplinkTests extends CoreTestCase {
             CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",
             CREDIT_HISTORY = "android-app://ru.sberbankmobile_alpha/creditreportservice?internal_source=audiohelper",
             AUTO_PAYMENTS = "android-app://ru.sberbankmobile_alpha/payments/auto_payments?internal_source=audiohelper",
-            TARIFFS = "android-app://ru.sberbankmobile_alpha/creditcard/tariffs",
+            TARIFFS = "android-app://ru.sberbankmobile_alpha/android-app/ru.sberbankmobile_alpha/creditcard/tariffs",
             CALL_BANK = "android-app://ru.sberbankmobile_alpha/callbank/voip?surface=sbol_assist&operator=1&internal_source=audiohelper",
             MAIN_SCREEN = "android-app://ru.sberbankmobile_alpha/main?internal_source=audiohelper",
             HISTORY = "android-app://ru.sberbankmobile_alpha/history?internal_source=audiohelper",
@@ -252,7 +254,6 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
-
     @Test
     public void testPotrebLoan() {
         HelperMethods HelperMethods = new HelperMethods(driver);
@@ -263,26 +264,24 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
-    //сервис временно не доступен, тест правильный
     @Test
     public void testOpenDeposit() {
         HelperMethods HelperMethods = new HelperMethods(driver);
-
         HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
         HelperMethods.tapLink(OPEN_DEPOSIT);
         HelperMethods.assertTitle("Подбор вклада");
     }
+
 
     //Ссылка-птичка
     @Test
     public void testTariffs() {
         HelperMethods HelperMethods = new HelperMethods(driver);
 
-        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.openSbolIFTandAssistantDialog("popovart1");
         HelperMethods.tapLink(TARIFFS);
         HelperMethods.assertTitle("Тарифы");
     }
-
 
     //ссылка-птичка
     @Test

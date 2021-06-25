@@ -196,7 +196,7 @@ public class DeeplinkTests extends CoreTestCase {
 
         HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
         HelperMethods.tapLink(DEBIT_STATEMENTS);
-        HelperMethods.assertTitle("Выписки и справки");
+        HelperMethods.assertTitle("Выписка по счету дебетовой карты");
     }
 
     @Test
@@ -205,7 +205,7 @@ public class DeeplinkTests extends CoreTestCase {
 
         HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
         HelperMethods.tapLink(AUTO_LOAN);
-        HelperMethods.assertTitle("Параметры автокредита");
+        HelperMethods.assertTitle("Автокредит");
     }
 
     @Test

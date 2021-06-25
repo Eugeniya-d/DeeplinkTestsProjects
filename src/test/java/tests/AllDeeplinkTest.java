@@ -157,38 +157,42 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
         HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
-        HelperMethods.tapLink(DEBIT_STATEMENTS);
-        HelperMethods.assertTitle("Выписка");
-        DeeplinkPageObject.backToAssistantButton();
-
-        OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(AUTO_LOAN);
-        HelperMethods.assertTitle("Параметры автокредита");
+        HelperMethods.assertTitle("Автокредит");
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(APPEAL);
         HelperMethods.assertTitle("Мои обращения");
+        DeeplinkPageObject.backToAssistantButton();
+
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(DEBIT_STATEMENTS);
+        HelperMethods.assertTitle("Выписка");
+        DeeplinkPageObject.backToMain();
     }
 
     public void testAllDeeplink6() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
 
-        HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
+        HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
         HelperMethods.tapLink(REFIN_LOAN);
         HelperMethods.assertTitle("Рефинансирование");;
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
-        HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
-        HelperMethods.assertTitle("Подключение уведомлений");
-        DeeplinkPageObject.backToAssistantButton();
-
-        OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(CREDIT_STATEMENTS);
         HelperMethods.assertTitle("Выписки и справки");
+        DeeplinkPageObject.backToMain();
+        //DeeplinkPageObject.backToAssistantButton();
+
+        MainScreenPageObject.enterToAssistant();
+        OpenDialogAssistantPageObject.selectKeyboard();
+        HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
+        HelperMethods.assertTitle("Подключение уведомлений");
     }
 
     public void testAllDeeplink7() {

@@ -17,6 +17,7 @@ public class DeeplinkPageObject extends MainPageObject {
             DENY_CALL_BUTTON = "ru.sberbankmobile_alpha:id/ip_call_activity_hang_up_container",
             CARD = "ru.sberbankmobile_alpha:id/product_basic_field",
             CONTINUE_BUTTON = "android:id/button1",
+            BACK_TO_MAIN = "//android.widget.ImageButton[@content-desc='Вернутья на главный']",
             BACK_TO_ASSISTANT = "//android.widget.ImageButton[@content-desc='Navigate up']",
             TITLE_TEXT_TPL = "//*[contains(@text, '{TITLETEXT}')]",
             LINK_CLICK1 = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/androidx.cardview.widget.CardView/android.widget.LinearLayout/android.widget.LinearLayout",
@@ -93,4 +94,9 @@ public class DeeplinkPageObject extends MainPageObject {
                 10);
     }
 
+    public void backToMain() {
+        waitForElementAndClick(By.xpath(BACK_TO_MAIN),
+                "Не найдена кнопка возврата на главный",
+                10);
+    }
 }

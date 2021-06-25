@@ -21,9 +21,6 @@ public class SettingsPageObject extends MainPageObject{
     private static final String IFT_SERVER_BUTTON = "//*[contains(@text, 'ИФТ')]";
     private static final String MENU_BUTTON= "//android.widget.ImageView[@content-desc='More options']";
 
-    public void menuSettings(int x, int y){
-        tapByCoordinates(x,y);
-    }
 
     public void waitForMenuButton() {
         waitForElementPresent(By.xpath(MENU_BUTTON),

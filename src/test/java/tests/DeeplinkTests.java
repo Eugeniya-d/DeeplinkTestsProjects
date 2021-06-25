@@ -25,7 +25,7 @@ public class DeeplinkTests extends CoreTestCase {
             CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",
             CREDIT_HISTORY = "android-app://ru.sberbankmobile_alpha/creditreportservice?internal_source=audiohelper",
             AUTO_PAYMENTS = "android-app://ru.sberbankmobile_alpha/payments/auto_payments?internal_source=audiohelper",
-            TARIFFS = "android-app://ru.sberbankmobile/android-app/ru.sberbankmobile/creditcard/tariffs",
+            TARIFFS = "android-app://ru.sberbankmobile_alpha/creditcard/tariffs",
             CALL_BANK = "android-app://ru.sberbankmobile_alpha/callbank/voip?surface=sbol_assist&operator=1&internal_source=audiohelper",
             MAIN_SCREEN = "android-app://ru.sberbankmobile_alpha/main?internal_source=audiohelper",
             HISTORY = "android-app://ru.sberbankmobile_alpha/history?internal_source=audiohelper",
@@ -252,14 +252,14 @@ public class DeeplinkTests extends CoreTestCase {
     }
 
 
-    //Сейчас тех работы, тест и ассерты верны
+
     @Test
     public void testPotrebLoan() {
         HelperMethods HelperMethods = new HelperMethods(driver);
 
         HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
         HelperMethods.tapLink(POTREB_LOAN);
-        HelperMethods.assertTitle("Предварительный расчет");
+        HelperMethods.assertTitle("Предварительный расчёт");
     }
 
 
@@ -270,7 +270,7 @@ public class DeeplinkTests extends CoreTestCase {
 
         HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
         HelperMethods.tapLink(OPEN_DEPOSIT);
-        HelperMethods.assertTitle("Вклады и счета");
+        HelperMethods.assertTitle("Подбор вклада");
     }
 
     //Ссылка-птичка
@@ -283,7 +283,7 @@ public class DeeplinkTests extends CoreTestCase {
         HelperMethods.assertTitle("Тарифы");
     }
 
-    
+
     //ссылка-птичка
     @Test
     public void testSberPay() {

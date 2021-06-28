@@ -36,7 +36,7 @@ public class AllDeeplinkTest extends CoreTestCase {
 
 
     @Test
-    public void testAllDeeplink() {
+    public void testMainScreen_CardReissue_CallBank() {
         MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
@@ -60,7 +60,7 @@ public class AllDeeplinkTest extends CoreTestCase {
     }
 
     @Test
-    public void testAllDeeplink1() {
+    public void testPushes_NotificationList_History() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -82,7 +82,7 @@ public class AllDeeplinkTest extends CoreTestCase {
     }
 
     @Test
-    public void testAllDeeplink2() {
+    public void testCardVisibility_AutoPayments_ChangePin() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -105,7 +105,7 @@ public class AllDeeplinkTest extends CoreTestCase {
     }
 
     @Test
-    public void testAllDeeplink3() {
+    public void testCreditCapacity_Fraud_DebCardOrder() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -127,7 +127,7 @@ public class AllDeeplinkTest extends CoreTestCase {
         HelperMethods.assertTitle("Дебетовые карты");
     }
 
-    public void testAllDeeplink4() {
+    public void testCrCarDOrder_CreditHistory_CardBlock() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -148,7 +148,7 @@ public class AllDeeplinkTest extends CoreTestCase {
         HelperMethods.assertTitle("Карты");
     }
 
-    public void testAllDeeplink5() {
+    public void testAutoLoan_Appeal_DebitStatements() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -168,7 +168,7 @@ public class AllDeeplinkTest extends CoreTestCase {
         HelperMethods.assertTitle("Выписка");
     }
 
-    public void testAllDeeplink6() {
+    public void testRefinLoan_CreditStatements_ActivateNotification() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
@@ -186,25 +186,22 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
         HelperMethods.closePopUp();
-        //HelperMethods.assertTitle("Подключение уведомлений");
     }
 
-    public void testAllDeeplink7() {
+    public void testOpenDeposit_PotrebLoan_StatementsAndReferences() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
         HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
         HelperMethods.tapLink(OPEN_DEPOSIT);
-        String pageSource = driver.getPageSource();
-        System.out.println(pageSource);
         HelperMethods.assertTitle("Подбор вклада");
-        DeeplinkPageObject.backToAssistantButton();
+        DeeplinkPageObject.backButtonClick();
 
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(POTREB_LOAN);
         HelperMethods.assertTitle("Предварительный расчёт");
-        DeeplinkPageObject.backToAssistantButton();
+        DeeplinkPageObject.backButtonClick();
 
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(STATEMENTS_AND_REFERENCES);

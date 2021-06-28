@@ -1,7 +1,5 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import lib.CoreTestCase;
 import methods.HelperMethods;
 import org.junit.Test;

@@ -12,11 +12,9 @@ public class AllDeeplinkTest extends CoreTestCase {
             CHANGE_PIN = "android-app://ru.sberbankmobile_alpha/digitalpin/setup?source=chatbot&internal_source=audiohelper",
             CARD_REISSUE = "android-app://ru.sberbankmobile_alpha/products/card/reissue?internal_source=audiohelper",
             CARD_BLOCK = "android-app://ru.sberbankmobile_alpha/blockcard/add?internal_source=audiohelper",
-            CARD_UNBLOCKING = "android-app://ru.sberbankmobile_alpha/products/card/unblock?internal_source=audiohelper",
             DEBIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/mdcard/mdcardrequest?internal_source=audiohelper",
             CREDIT_CARD_ORDER = "android-app://ru.sberbankmobile_alpha/creditcardorder/order?internal_source=audiohelper",
             CARD_VISIBILITY = "android-app://ru.sberbankmobile_alpha/visibilityRecovery?internal_source=audiohelper",
-            SBER_PAY = "android-app://ru.sberbankmobile_alpha/sberpay/nfc/wallet?internal_source=audiohelper",
             OPEN_DEPOSIT = "android-app://ru.sberbankmobile_alpha/products/deposit?action=create&internal_source=audiohelper",
             ACTIVATE_NOTIFICATION = "android-app://ru.sberbankmobile_alpha/mobilebank/activation?internal_source=audiohelper",
             NOTIFICATION_LIST = "android-app://ru.sberbankmobile_alpha/pushes/notificationlist?internal_source=audiohelper",
@@ -27,7 +25,6 @@ public class AllDeeplinkTest extends CoreTestCase {
             CREDIT_CAPACITY = "android-app://ru.sberbankmobile_alpha/creditcapacity/calculatecp?internal_source=audiohelper",
             CREDIT_HISTORY = "android-app://ru.sberbankmobile_alpha/creditreportservice?internal_source=audiohelper",
             AUTO_PAYMENTS = "android-app://ru.sberbankmobile_alpha/payments/auto_payments?internal_source=audiohelper",
-            TARIFFS = "android-app://ru.sberbankmobile/android-app/ru.sberbankmobile/creditcard/tariffs",
             CALL_BANK = "android-app://ru.sberbankmobile_alpha/callbank/voip?surface=sbol_assist&operator=1&internal_source=audiohelper",
             MAIN_SCREEN = "android-app://ru.sberbankmobile_alpha/main?internal_source=audiohelper",
             HISTORY = "android-app://ru.sberbankmobile_alpha/history?internal_source=audiohelper",
@@ -169,14 +166,12 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(DEBIT_STATEMENTS);
         HelperMethods.assertTitle("Выписка");
-        DeeplinkPageObject.backToMain();
     }
 
     public void testAllDeeplink6() {
         HelperMethods HelperMethods = new HelperMethods(driver);
         DeeplinkPageObject DeeplinkPageObject = new DeeplinkPageObject(driver);
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
-        MainScreenPageObject MainScreenPageObject = new MainScreenPageObject(driver);
 
         HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
         HelperMethods.tapLink(REFIN_LOAN);
@@ -186,13 +181,12 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(CREDIT_STATEMENTS);
         HelperMethods.assertTitle("Выписки и справки");
-        DeeplinkPageObject.backToMain();
-        //DeeplinkPageObject.backToAssistantButton();
+        DeeplinkPageObject.backButtonClick();
 
-        MainScreenPageObject.enterToAssistant();
         OpenDialogAssistantPageObject.selectKeyboard();
         HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
-        HelperMethods.assertTitle("Подключение уведомлений");
+        HelperMethods.closePopUp();
+        //HelperMethods.assertTitle("Подключение уведомлений");
     }
 
     public void testAllDeeplink7() {
@@ -201,8 +195,10 @@ public class AllDeeplinkTest extends CoreTestCase {
         OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
 
         HelperMethods.openSbolIFTandAssistantDialog("2797227457kp");
-        HelperMethods.tapLink(STATEMENTS_AND_REFERENCES);
-        HelperMethods.assertTitle("Выписки и справки");
+        HelperMethods.tapLink(OPEN_DEPOSIT);
+        String pageSource = driver.getPageSource();
+        System.out.println(pageSource);
+        HelperMethods.assertTitle("Подбор вклада");
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
@@ -211,7 +207,7 @@ public class AllDeeplinkTest extends CoreTestCase {
         DeeplinkPageObject.backToAssistantButton();
 
         OpenDialogAssistantPageObject.selectKeyboard();
-        HelperMethods.tapLink(OPEN_DEPOSIT);
-        HelperMethods.assertTitle("Подбор вклада");
+        HelperMethods.tapLink(STATEMENTS_AND_REFERENCES);
+        HelperMethods.assertTitle("Выписки и справки");
     }
 }

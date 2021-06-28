@@ -18,17 +18,17 @@ public class HelperMethods extends MainPageObject {
 
 
     public void tapLink(String link) {
-        OpenDialogAssistantPageObject OpenDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
+        OpenDialogAssistantPageObject openDialogAssistantPageObject = new OpenDialogAssistantPageObject(driver);
         DeeplinkPageObject deeplinkPageObject = new DeeplinkPageObject(driver);
 
-        OpenDialogAssistantPageObject.clickInputLine();
-        OpenDialogAssistantPageObject.inputText(link);
-        OpenDialogAssistantPageObject.sendMessage();
-        OpenDialogAssistantPageObject.sendMessage();
+        openDialogAssistantPageObject.clickInputLine();
+        openDialogAssistantPageObject.inputText(link);
+        openDialogAssistantPageObject.sendMessage();
+        openDialogAssistantPageObject.sendMessage();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         try {
-            OpenDialogAssistantPageObject.denyAssistantNotification();
+            openDialogAssistantPageObject.denyAssistantNotification();
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
         }
@@ -99,4 +99,13 @@ public class HelperMethods extends MainPageObject {
         OpenDialogAssistantPageObject.selectKeyboard();
     }
 
+    public void closePopUp() {
+        DeeplinkPageObject deeplinkPageObject = new DeeplinkPageObject(driver);
+        try {
+            deeplinkPageObject.popUpClose();
+        } catch (Exception e) {
+            this.assertTitle("Подключение уведомлений");
+            System.out.println(e.getMessage());
+        }
+    }
 }

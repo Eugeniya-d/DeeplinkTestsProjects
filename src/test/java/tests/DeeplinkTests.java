@@ -232,7 +232,8 @@ public class DeeplinkTests extends CoreTestCase {
 
         HelperMethods.openSbolIFTandAssistantDialog("chatbotvoice");
         HelperMethods.tapLink(ACTIVATE_NOTIFICATION);
-        HelperMethods.assertTitle("Подключение уведомлений");
+        HelperMethods.closePopUp();
+       // HelperMethods.assertTitle("Подключение уведомлений");
     }
 
     @Test
